@@ -1,0 +1,282 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.signup-login-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.16);
+  .signup-login-modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    background-color: white;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+
+    .signup-login-modal-exit {
+      float: right;
+      margin: 10px 10px 0 0;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      width: 32px;
+      height: 32px;
+      background-image: url("//s3.marpple.co/files/u_193535/2018/12/original/f_18632_1545117841977_a8X6NA3p8T4cNCvpowk4t.png");
+    }
+    .signup-login-modal-exit:hover {
+      cursor: pointer;
+    }
+
+    .signup-login-modal-title {
+      clear: both;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #d5dbe0;
+      div {
+        font-size: 32px;
+        margin: 20px 30px;
+      }
+      .signup:hover {
+        cursor: pointer;
+        font-weight: 900;
+      }
+      .login:hover {
+        cursor: pointer;
+        font-weight: 900;
+      }
+    }
+    .signup-login-modal-signup-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px 0;
+      .signup-kakao,
+      .signup-google {
+        text-align: center;
+        border: 1px solid #d5dbe0;
+        width: 80%;
+        padding: 10px 0;
+        border-radius: 5px;
+      }
+      .or {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .navBar-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d5dbe0;
+    .navBar-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      min-width: 566px;
+      padding: 30px 0;
+
+      .navBar-body-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        min-width: 412px;
+
+        .navBar-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 30px;
+          font-weight: 900;
+        }
+        .navBar-menu {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 250px;
+
+          .navBar-menu-clothes {
+            padding: 0 40px;
+            font-weight: 500;
+          }
+
+          .navBar-menu-phoneCase {
+            padding: 0 40px;
+            font-weight: 500;
+          }
+        }
+      }
+      .navBar-body-right {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+        width: 150px;
+
+        .navBar-account {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .navBar-myPage {
+            img {
+              width: 18px;
+              height: 19px;
+              padding: 0 15px;
+            }
+          }
+          .navBar-like {
+            img {
+              width: 22px;
+              height: 19px;
+              padding: 0 15px;
+            }
+          }
+          .navBar-cart {
+            img {
+              width: 16px;
+              height: 19px;
+              padding: 0 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .account-modal-background {
+    z-index: 10;
+    position: absolute;
+    top: 22px;
+    right: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #d5dbe0;
+    width: 180px;
+    padding: 20px;
+    div {
+      margin: 10px 0;
+      text-align: left;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .navBar-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d5dbe0;
+    .navBar-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      min-width: 566px;
+      padding: 30px 0;
+
+      .navBar-body-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        min-width: 412px;
+
+        .navBar-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .navBar-menu {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 200px;
+
+          .navBar-menu-clothes {
+            padding: 0 10px;
+            font-weight: 500;
+          }
+
+          .navBar-menu-phoneCase {
+            padding: 0 10px;
+            font-weight: 500;
+          }
+        }
+      }
+      .navBar-body-right {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+
+        .navBar-account {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .navBar-myPage {
+            img {
+              width: 18px;
+              height: 19px;
+              padding: 0 10px;
+            }
+          }
+          .navBar-like {
+            img {
+              width: 22px;
+              height: 19px;
+              padding: 0 10px;
+            }
+          }
+          .navBar-cart {
+            img {
+              width: 16px;
+              height: 19px;
+              padding: 0 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .account-modal-background {
+    z-index: 10;
+    position: absolute;
+    top: 22px;
+    right: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #d5dbe0;
+    width: 180px;
+    padding: 20px;
+    div {
+      margin: 10px 0;
+      text-align: left;
+      width: 100%;
+    }
+  }
+}
