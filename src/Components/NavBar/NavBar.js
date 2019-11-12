@@ -13,6 +13,7 @@ export default class NavBar extends React.Component {
   }
 
   handlerSignupLoginModalSwitch = e => {
+    console.log("worked");
     this.state.signuploginModalSwitch
       ? this.setState({
           signuploginModalSwitch: false
