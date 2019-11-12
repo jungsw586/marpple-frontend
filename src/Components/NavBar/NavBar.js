@@ -35,6 +35,12 @@ export default class NavBar extends React.Component {
     });
   };
 
+  handlerLogout = e => {
+    this.setState({
+      logOn: false
+    });
+  };
+
   render() {
     const { logOn, signuploginModalSwitch, signupModalPage } = this.state;
     return (
@@ -118,7 +124,9 @@ export default class NavBar extends React.Component {
               <div className="account-modal-background">
                 <div className="email">jungsw586@gmail.com</div>
                 <div className="history">구매내역</div>
-                <div className="logout">로그아웃</div>
+                <div className="logout" onClick={this.handlerLogout}>
+                  로그아웃
+                </div>
               </div>
             ) : null}
           </div>
