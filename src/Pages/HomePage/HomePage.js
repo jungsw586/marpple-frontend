@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import NavBar from "Components/NavBar";
 
 export class HomePage extends Component {
   render() {
-    return <h1>we-marpple</h1>;
+    return (
+      <>
+        <NavBar />
+      </>
+    );
   }
 }
 
