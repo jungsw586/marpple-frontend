@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./NavBar.scss";
+import { KAKAO_KEY } from "config";
 
 class NavBar extends Component {
   state = {
@@ -33,6 +34,22 @@ class NavBar extends Component {
     );
   };
 
+  componentDidMount = () => {
+    !window.Kakao.isInitialized() && window.Kakao.init(KAKAO_KEY);
+  };
+
+  handlerKakaoLoginSignup = () => {
+    window.Kakao.Auth.login({
+      success: function(authObj) {
+        console.log(JSON.stringify(authObj));
+        alert(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+        alert(JSON.stringify(err));
+      }
+    });
+  };
+
   render() {
     const { logOn, signuploginModalSwitch, signupModalState } = this.state;
     return (
@@ -54,17 +71,53 @@ class NavBar extends Component {
               </div>
               {signupModalState === "signup" ? (
                 <div className="signup-login-modal-signup-btn">
-                  <div className="signup-kakao">카카오톡 계정으로 가입하기</div>
+                  <div
+                    className="signup-kakao"
+                    onClick={this.handlerKakaoLoginSignup}
+                  >
+                    <img
+                      src={
+                        "https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium_ov.png"
+                      }
+                      alt="kakao-login"
+                    />
+                    <div className="text">카카오톡 계정으로 가입하기</div>
+                  </div>
                   <div className="or">or</div>
-                  <div className="signup-google">구글 계정으로 가입하기</div>
+                  <div className="signup-google">
+                    <img
+                      src={
+                        "https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png"
+                      }
+                      alt="kakao-login"
+                    />
+                    <div className="text">구글 계정으로 가입하기</div>
+                  </div>
                 </div>
               ) : (
                 <div className="signup-login-modal-signup-btn">
-                  <div className="signup-kakao">
-                    카카오톡 계정으로 로그인하기
+                  <div
+                    className="signup-kakao"
+                    onClick={this.handlerKakaoLoginSignup}
+                  >
+                    <img
+                      src={
+                        "https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium_ov.png"
+                      }
+                      alt="kakao-login"
+                    />
+                    <div className="text">카카오톡 계정으로 로그인하기</div>
                   </div>
                   <div className="or">or</div>
-                  <div className="signup-google">구글 계정으로 로그인하기</div>
+                  <div className="signup-google">
+                    <img
+                      src={
+                        "https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png"
+                      }
+                      alt="kakao-login"
+                    />
+                    <div className="text">구글 계정으로 로그인하기</div>
+                  </div>
                 </div>
               )}
             </div>
