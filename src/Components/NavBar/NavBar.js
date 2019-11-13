@@ -1,17 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.scss";
 
-export default class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      logOn: true,
-      signuploginModalSwitch: false,
-      signupModalPage: true,
-      signupModalState: null
-    };
-  }
+export default class NavBar extends Component {
+  state = {
+    logOn: true,
+    signuploginModalSwitch: false,
+    signupModalPage: true,
+    signupModalState: null
+  };
 
   handlerSignupLoginModalSwitch = e => {
     console.log("worked");
