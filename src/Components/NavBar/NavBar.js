@@ -7,35 +7,25 @@ export default class NavBar extends Component {
     logOn: true,
     signuploginModalSwitch: false,
     signupModalPage: true,
-    signupModalState: null
+    signupModalState: "signup"
   };
 
-  handlerSignupLoginModalSwitch = e => {
-    console.log("worked");
-    this.state.signuploginModalSwitch
-      ? this.setState({
-          signuploginModalSwitch: false
-        })
-      : this.setState({
-          signuploginModalSwitch: true
-        });
+  handlerSignupLoginModalSwitch = () => {
+    this.setState({
+      signuploginModalSwitch: !this.state.signuploginModalSwitch
+    });
   };
 
   handlerSignupModalPage = e => {
     if (this.state.signupModalState !== e.target.className) {
-      this.state.signupModalPage
-        ? this.setState({
-            signupModalPage: false,
-            signupModalState: e.target.className
-          })
-        : this.setState({
-            signupModalPage: true,
-            signupModalState: e.target.className
-          });
+      this.setState({
+        signupModalPage: !this.state.signupModalPage,
+        signupModalState: e.target.className
+      });
     }
   };
 
-  handlerLogout = e => {
+  handlerLogout = () => {
     this.setState({
       logOn: false
     });
