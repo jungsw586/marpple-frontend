@@ -1,0 +1,54 @@
+.print-info {
+  margin: 50px auto;
+  max-width: 1025px;
+  padding: 50px 0px 0px;
+  border-top: 1px solid #000;
+  .print-info-title {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .print-info-images {
+    margin: 0 0 36px;
+    display: flex;
+    justify-content: center;
+    img {
+      margin: 0 auto;
+    }
+  }
+  h2 {
+    margin: 36px 0 15px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  ul {
+    margin: 0 0 0 18px;
+    padding: 0;
+    list-style-type: disc;
+    li {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      list-style: disc;
+    }
+  }
+  p {
+    margin: 0 0 15px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  h3 {
+    margin: 10px 0 4px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .grey-text {
+    margin: 0;
+    padding: 0;
+    color: #868e96;
+    line-height: 1.71;
+  }
+}
