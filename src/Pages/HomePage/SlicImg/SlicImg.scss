@@ -1,0 +1,79 @@
+@import "../../../Styles/config.scss";
+
+@media #{$desktop} {
+  .homepage-slic-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    overflow: hidden;
+
+    .homepage-slic-img-content {
+      display: flex;
+      width: 300%;
+
+      &.slicIdx1 {
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        transform: translateX(0%);
+      }
+
+      &.slicIdx2 {
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        transform: translateX(-100%);
+      }
+
+      &.slicIdx3 {
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        transform: translateX(-200%);
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media #{$ipad} {
+  .homepage-slic-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    min-width: 908px;
+    .homepage-slic-img-content {
+      display: flex;
+      width: 300%;
+
+      &.slicIdx1 {
+        transition-property: translateX();
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        transform: translateX(0%);
+      }
+
+      &.slicIdx2 {
+        transition-property: translateX();
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        transform: translateX(-100%);
+      }
+
+      &.slicIdx3 {
+        transition-property: translateX();
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+        transform: translateX(-200%);
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

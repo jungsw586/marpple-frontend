@@ -1,0 +1,71 @@
+@import "../../../Styles/config.scss";
+
+@media #{$desktop} {
+  .homepage-service-description-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1060px;
+    width: 90%;
+    .homepage-service-desc-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0 10px;
+      padding: 10px;
+      .homepage-service-desc-imgBox {
+        width: 112px;
+        height: 80px;
+        margin-right: 20px;
+      }
+      .homepage-service-desc-textBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .service-title {
+          font-size: 18px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+        .service-desc {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media #{$ipad} {
+  .homepage-service-description-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 908px;
+    width: 90%;
+    .homepage-service-desc-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0 10px;
+      padding: 10px;
+      .homepage-service-desc-imgBox {
+        width: 93px;
+        height: 60px;
+        margin-right: 20px;
+      }
+      .homepage-service-desc-textBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .service-title {
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+        .service-desc {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
