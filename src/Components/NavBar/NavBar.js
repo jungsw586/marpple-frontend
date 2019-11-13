@@ -8,7 +8,8 @@ export default class NavBar extends React.Component {
     this.state = {
       logOn: true,
       signuploginModalSwitch: false,
-      signupModalPage: true
+      signupModalPage: true,
+      signupModalState: null
     };
   }
 
@@ -23,16 +24,18 @@ export default class NavBar extends React.Component {
         });
   };
 
-  handlerSignupModalPageOn = e => {
-    this.setState({
-      signupModalPage: true
-    });
-  };
-
-  handlerSignupModalPageOff = e => {
-    this.setState({
-      signupModalPage: false
-    });
+  handlerSignupModalPage = e => {
+    if (this.state.signupModalState !== e.target.className) {
+      this.state.signupModalPage
+        ? this.setState({
+            signupModalPage: false,
+            signupModalState: e.target.className
+          })
+        : this.setState({
+            signupModalPage: true,
+            signupModalState: e.target.className
+          });
+    }
   };
 
   handlerLogout = e => {
@@ -53,10 +56,10 @@ export default class NavBar extends React.Component {
                 onClick={this.handlerSignupLoginModalSwitch}
               ></div>
               <div className="signup-login-modal-title">
-                <div className="signup" onClick={this.handlerSignupModalPageOn}>
+                <div className="signup" onClick={this.handlerSignupModalPage}>
                   회원가입
                 </div>
-                <div className="login" onClick={this.handlerSignupModalPageOff}>
+                <div className="login" onClick={this.handlerSignupModalPage}>
                   로그인
                 </div>
               </div>
