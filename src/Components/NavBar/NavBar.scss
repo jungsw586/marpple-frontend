@@ -2,6 +2,7 @@
 
 .signup-login-modal-background {
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   bottom: 0;
@@ -195,7 +196,7 @@
       justify-content: space-between;
       align-items: center;
       width: 90%;
-      min-width: 566px;
+      min-width: 908px;
       padding: 30px 0;
       a {
         text-decoration: none;
