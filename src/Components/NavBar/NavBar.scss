@@ -135,6 +135,9 @@
           align-items: center;
 
           .navBar-myPage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img {
               width: 18px;
               height: 19px;
@@ -151,12 +154,18 @@
               padding: 0 15px;
             }
           }
+          .navBar-like:hover {
+            cursor: pointer;
+          }
           .navBar-cart {
             img {
               width: 16px;
               height: 19px;
               padding: 0 15px;
             }
+          }
+          .navBar-cart:hover {
+            cursor: pointer;
           }
         }
       }
