@@ -1,0 +1,129 @@
+@import "../../../Styles/config.scss";
+
+@media #{$desktop} {
+  .homepage-slic-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 20px 0;
+
+    .homepage-slic-text-body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 630px;
+      min-width: 630px;
+      .homepage-slic-text {
+        margin: 0 40px;
+      }
+      .homepage-slic-text-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        padding: 0 60px;
+        height: 40px;
+
+        h1 {
+          font-style: italic;
+          text-align: center;
+        }
+        &.slicIdx1 {
+          transition-duration: 0.1s;
+          transition-timing-function: linear;
+          transform: translateY(200%);
+        }
+
+        &.slicIdx2 {
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+          transform: translateY(-5%);
+        }
+
+        &.slicIdx3 {
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+          transform: translateY(-210%);
+        }
+      }
+      .underline {
+        z-index: -1;
+        width: 32%;
+        height: 15px;
+        background-color: #fcf753;
+        position: absolute;
+        bottom: 18%;
+        right: 18%;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media #{$ipad} {
+  .homepage-slic-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: 20px 0;
+
+    .homepage-slic-text-body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      min-width: 908px;
+      .homepage-slic-text {
+        font-size: 15px;
+        margin: 0;
+      }
+      .homepage-slic-text-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        padding: 0 60px;
+        height: 40px;
+
+        h1 {
+          font-size: 20px;
+          font-style: italic;
+          text-align: center;
+        }
+        &.slicIdx1 {
+          transition-duration: 0.1s;
+          transition-timing-function: linear;
+          transform: translateY(122%);
+        }
+
+        &.slicIdx2 {
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+          transform: translateY(0%);
+        }
+
+        &.slicIdx3 {
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+          transform: translateY(-130%);
+        }
+      }
+      .underline {
+        z-index: -1;
+        width: 18%;
+        height: 15px;
+        background-color: #fcf753;
+        position: absolute;
+        bottom: 18%;
+        right: 32%;
+        opacity: 1;
+      }
+    }
+  }
+}
