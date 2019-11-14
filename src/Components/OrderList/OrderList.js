@@ -43,6 +43,7 @@ class OrderList extends Component {
                 </tr>
               </thead>
               <OrderListTableContent currentRoute={currentRoute} />
+              <OrderListTableContent currentRoute={currentRoute} />
             </table>
             {currentRoute === "/cart_list" && (
               <div className="add-color">색상추가 +</div>
