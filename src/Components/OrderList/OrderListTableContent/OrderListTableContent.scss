@@ -1,0 +1,54 @@
+.table-body {
+  tr {
+    height: 200px;
+  }
+  .product-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    img {
+      width: 100px;
+      height: 100px;
+      padding: 20px;
+    }
+    .product-info-desc {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+    }
+  }
+  .size-count-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    input {
+      text-align: center;
+      width: 46px;
+    }
+  }
+  .price-info {
+    text-align: center;
+    font-size: 14px;
+  }
+  .edit-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div {
+      width: 88px;
+      text-align: center;
+      border: 1px solid #868e96;
+      font-size: 10px;
+      padding: 5px;
+      margin: 2px 0;
+    }
+    div:hover {
+      cursor: pointer;
+      color: #0157ff;
+    }
+  }
+}
