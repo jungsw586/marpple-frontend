@@ -27,7 +27,8 @@ export default class NavBar extends Component {
 
   handlerLogout = () => {
     this.setState({
-      logOn: false
+      logOn: false,
+      signuploginModalSwitch: false
     });
   };
 
@@ -93,22 +94,50 @@ export default class NavBar extends Component {
                   alt="MyPage"
                 />
               </div>
-              <Link className="navBar-like" to={"/like_list"}>
-                <img
-                  src={
-                    "https://s3.marpple.co/files/u_29089/2019/2/original/f_23502_1550685349645_VQhJUU8KLeQqWq2qE.svg"
-                  }
-                  alt="Like"
-                />
-              </Link>
-              <Link className="navBar-cart" to={"/cart_list"}>
-                <img
-                  src={
-                    "https://s3.marpple.co/files/u_29089/2019/2/original/f_23503_1550685349645_n6K6x6A8Lm9EiPd2C5K1I4Cw.svg"
-                  }
-                  alt="Cart"
-                />
-              </Link>
+              {logOn ? (
+                <Link className="navBar-like" to={"/like_list"}>
+                  <img
+                    src={
+                      "https://s3.marpple.co/files/u_29089/2019/2/original/f_23502_1550685349645_VQhJUU8KLeQqWq2qE.svg"
+                    }
+                    alt="Like"
+                  />
+                </Link>
+              ) : (
+                <div
+                  className="navBar-like"
+                  onClick={this.handlerSignupLoginModalSwitch}
+                >
+                  <img
+                    src={
+                      "https://s3.marpple.co/files/u_29089/2019/2/original/f_23502_1550685349645_VQhJUU8KLeQqWq2qE.svg"
+                    }
+                    alt="Like"
+                  />
+                </div>
+              )}
+              {logOn ? (
+                <Link className="navBar-cart" to={"/cart_list"}>
+                  <img
+                    src={
+                      "https://s3.marpple.co/files/u_29089/2019/2/original/f_23503_1550685349645_n6K6x6A8Lm9EiPd2C5K1I4Cw.svg"
+                    }
+                    alt="Cart"
+                  />
+                </Link>
+              ) : (
+                <div
+                  className="navBar-cart"
+                  onClick={this.handlerSignupLoginModalSwitch}
+                >
+                  <img
+                    src={
+                      "https://s3.marpple.co/files/u_29089/2019/2/original/f_23503_1550685349645_n6K6x6A8Lm9EiPd2C5K1I4Cw.svg"
+                    }
+                    alt="Cart"
+                  />
+                </div>
+              )}
             </div>
             {logOn && signuploginModalSwitch ? (
               <div className="account-modal-background">
