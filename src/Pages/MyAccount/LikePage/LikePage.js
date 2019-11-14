@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "Components/NavBar";
 import OrderList from "Components/OrderList";
-import "./CartPage.scss";
+import "./LikePage.scss";
 
-export default function CartPage() {
+export default function LikePage() {
   return (
     <>
       <NavBar />
