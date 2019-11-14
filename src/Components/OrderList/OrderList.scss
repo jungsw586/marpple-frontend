@@ -1,0 +1,177 @@
+@import "../../Styles/config.scss";
+
+@media #{$desktop} {
+  .orderlist-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    .orderlist-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 70%;
+      margin: 50px 0;
+      .orderlist-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        padding: 40px 0;
+        .orderlist-header-title {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+          }
+          .count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #868e96;
+          }
+        }
+        .cart-process {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          font-size: 14px;
+          .nextArrow::after {
+            content: ">";
+            margin: 0 10px;
+          }
+        }
+      }
+      .orderlist-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        background-color: #fff;
+        border-top: 1px solid #000;
+
+        .orderlist-table {
+          width: 100%;
+          .table-header {
+            .col1 {
+              width: 55%;
+            }
+            tr {
+              height: 50px;
+              th {
+                font-size: 14px;
+                border-bottom: 2px solid #f5f5f5;
+              }
+            }
+          }
+        }
+        .add-color {
+          text-align: center;
+          font-size: 12px;
+          font-weight: 600;
+          color: #0157ff;
+          width: 90%;
+          border-top: 2px solid #f5f5f5;
+          padding: 15px 0;
+        }
+        .add-color:hover {
+          cursor: pointer;
+        }
+      }
+      .orderlist-table-summary {
+        margin-top: 60px;
+        width: 100%;
+        border-top: 1px solid #000;
+        background-color: #fff;
+        .table-summary-header {
+          .summary-col4 {
+            width: 25%;
+          }
+          tr {
+            height: 50px;
+            th {
+              font-size: 14px;
+              font-weight: bold;
+
+              border-bottom: 2px solid #f5f5f5;
+            }
+          }
+        }
+        .table-summary-body {
+          tr {
+            height: 80px;
+            td div {
+              display: flex;
+              justify-content: center;
+              align-content: center;
+              text-align: center;
+              font-size: 14px;
+              font-weight: bold;
+            }
+            .summary-total div {
+              font-size: 18px;
+              font-weight: bold;
+            }
+
+            .equalIcon,
+            .plusIcon {
+              width: 24px;
+              height: 24px;
+              color: #868e96;
+              border-radius: 12px;
+              margin: auto;
+            }
+          }
+        }
+      }
+      .summit {
+        width: 340px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #000;
+        padding: 15px 0;
+        margin: 40px 0;
+      }
+      .summit:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .table-body {
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #000;
+    }
+    td {
+      border-bottom: 2px solid #f5f5f5;
+    }
+    .add-color {
+      height: 60px;
+      td {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: #0157ff;
+        width: 90%;
+        border-bottom: 10px solid #f5f5f5;
+      }
+    }
+    .add-color:hover {
+      cursor: pointer;
+    }
+    .empty {
+      background-color: #f5f5f5;
+      td {
+        width: 90%;
+        border-bottom: 10px solid #f5f5f5;
+      }
+    }
+  }
+}

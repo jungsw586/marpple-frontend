@@ -33,6 +33,16 @@ export class CustomMake extends Component {
                 : `url(${itemBackImg})`
             }}
           ></div>
+          {this.props.mode === "text" && (
+            <div className="size-limit">
+              <input
+                className="text-box"
+                type="text"
+                placeholder={"텍스트"}
+                style={this.props.textOption}
+              />
+            </div>
+          )}
         </div>
         <div className="front-back">
           <div className="btn-container">
@@ -77,7 +87,10 @@ export class CustomMake extends Component {
               ></div>
               <div className="selector-name">내이미지</div>
             </div>
-            <div className="selector-container">
+            <div
+              className="selector-container"
+              onClick={() => this.props.handleMode("text")}
+            >
               <div
                 className="selector-icon"
                 style={{ backgroundImage: `url(${text})` }}
