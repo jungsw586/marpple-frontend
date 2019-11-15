@@ -6,6 +6,7 @@ import "./OrderList.scss";
 class OrderList extends Component {
   render() {
     const currentRoute = this.props.match.path;
+    const { dataCount } = this.props;
     return (
       <div className="orderlist-background">
         <div className="orderlist-body">
@@ -14,7 +15,7 @@ class OrderList extends Component {
               <>
                 <div className="orderlist-header-title">
                   <div className="title">My Cart</div>
-                  <div className="count">{`(0)`}</div>
+                  <div className="count">{`(${dataCount})`}</div>
                 </div>
                 <div className="cart-process">
                   <div className="nextArrow">장바구니</div>
@@ -26,7 +27,7 @@ class OrderList extends Component {
               <>
                 <div className="orderlist-header-title">
                   <div className="title">Like Item</div>
-                  <div className="count">{`(0)`}</div>
+                  <div className="count">{`(${dataCount})`}</div>
                 </div>
                 <div></div>
               </>
@@ -42,8 +43,18 @@ class OrderList extends Component {
                   <th className="col4">편집</th>
                 </tr>
               </thead>
-              <OrderListTableContent currentRoute={currentRoute} />
-              <OrderListTableContent currentRoute={currentRoute} />
+              {(() => {
+                let _list = [];
+                for (let i = 0; i < dataCount; i++) {
+                  _list.push(
+                    <OrderListTableContent
+                      key={i}
+                      currentRoute={currentRoute}
+                    />
+                  );
+                }
+                return _list;
+              })()}
             </table>
             {currentRoute === "/cart_list" && (
               <div className="add-color">색상추가 +</div>
