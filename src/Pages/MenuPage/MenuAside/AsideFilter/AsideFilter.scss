@@ -1,0 +1,100 @@
+.filter-list {
+  width: 200px;
+  left: 0;
+  position: relative;
+  margin-top: 40px;
+  .filter-header {
+    .filter-title {
+      margin: 0;
+      font-weight: bold;
+      padding-bottom: 16px;
+      font-size: 14px;
+      border-bottom: 1px solid #d5dbe0;
+      line-height: 1.14;
+    }
+  }
+  .filter-body {
+    letter-spacing: -0.1px;
+    .filter-body-ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      .filter-body-li {
+        padding-right: 16px;
+        position: relative;
+        border-bottom: 1px solid #f5f5f5;
+        padding: 16px 0;
+        cursor: pointer;
+        .arrow {
+          position: absolute;
+          top: 20px;
+          right: 0;
+          height: 6px;
+          width: 10px;
+          background-image: url("http://s3.marpple.co/files/u_29089/2019/1/original/f_23323_1548149511325_E7k6e5MW2e9GR4TD5sxmEm.png");
+          background-size: 10px 6px;
+        }
+        .down {
+          background-image: url("http://s3.marpple.co/files/u_29089/2019/1/original/f_23323_1548149511325_E7k6e5MW2e9GR4TD5sxmEm.png");
+        }
+        .up {
+          background-image: url("http://s3.marpple.co/files/u_29089/2019/1/original/f_23322_1548149497872_xwu2vhmFdp2slFhci.png");
+        }
+      }
+      .hidden-filter {
+        width: 100%;
+        ul {
+          padding: 0;
+          margin: 20px 0;
+          list-style: none;
+          li {
+            position: relative;
+            margin-bottom: 16px;
+            cursor: pointer;
+            input {
+              position: absolute;
+              top: 0;
+              left: 0;
+              visibility: hidden;
+              margin: 0;
+            }
+            .checkbox {
+              cursor: pointer;
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              vertical-align: top;
+              position: relative;
+              background-size: 100%;
+              background-image: url(//s3.marpple.co/files/u_29089/2019/1/original/f_23320_1548149201830_o6H7T0uQ0kx3e5Q7mlUN0VL.png);
+            }
+            .color-checkbox {
+              cursor: pointer;
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              vertical-align: top;
+              position: relative;
+              border: 1px solid;
+            }
+            .filter-item-name {
+              cursor: pointer;
+              position: relative;
+              padding-left: 16px;
+              display: inline-block;
+              vertical-align: top;
+              color: #000;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      .block {
+        display: block;
+      }
+      .none {
+        display: none;
+      }
+    }
+  }
+}
