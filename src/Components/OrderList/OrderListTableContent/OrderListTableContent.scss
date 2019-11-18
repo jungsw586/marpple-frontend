@@ -1,13 +1,10 @@
 .table-body {
-  tr {
-    height: 200px;
-  }
   .product-info {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px 20px;
     img {
       width: 100px;
       height: 100px;
@@ -24,7 +21,8 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 14px;
-    input {
+    .countBox {
+      border: 1px solid #868e96;
       text-align: center;
       width: 46px;
     }

@@ -1,0 +1,24 @@
+.product-list-header {
+  min-height: 19px;
+  margin: 0 8px;
+  display: flex;
+  font-size: 14px;
+  span {
+    padding: 13px 18px 13px 17px;
+    position: relative;
+    margin: -13px 0 -13px auto;
+    cursor: pointer;
+    .arrow {
+      content: "";
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 19px;
+      right: 0;
+      width: 10px;
+      height: 6px;
+      background-size: 100%;
+      background-image: url("http://s3.marpple.co/files/u_18050/2018/9/original/f_5875_1537284759381_Ud4eH8zur3ghvrGV2v2q.png");
+    }
+  }
+}

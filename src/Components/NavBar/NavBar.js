@@ -127,10 +127,10 @@ class NavBar extends Component {
               WE MARPPLE
             </Link>
             <div className="navBar-menu">
-              <Link className="navBar-menu-clothes" to={"/menu/:id"}>
+              <Link className="navBar-menu-clothes" to={"/menu"}>
                 Clothes
               </Link>
-              <Link className="navBar-menu-phoneCase" to={"/menu/:id"}>
+              <Link className="navBar-menu-phoneCase" to={"/menu"}>
                 PhoneCases
               </Link>
             </div>
@@ -146,7 +146,7 @@ class NavBar extends Component {
                     }
                     alt="MyPage"
                   />
-                  <Link className="navBar-like" to={"/like_list"}>
+                  <Link className="navBar-like" to={"/list/like"}>
                     <img
                       src={
                         "https://s3.marpple.co/files/u_29089/2019/2/original/f_23502_1550685349645_VQhJUU8KLeQqWq2qE.svg"
@@ -154,7 +154,7 @@ class NavBar extends Component {
                       alt="Like"
                     />
                   </Link>
-                  <Link className="navBar-cart" to={"/cart_list"}>
+                  <Link className="navBar-cart" to={"/list/cart"}>
                     <img
                       src={
                         "https://s3.marpple.co/files/u_29089/2019/2/original/f_23503_1550685349645_n6K6x6A8Lm9EiPd2C5K1I4Cw.svg"

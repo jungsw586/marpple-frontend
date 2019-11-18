@@ -1,0 +1,42 @@
+.sortModal {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border: 1px solid #d5dbe0;
+  font-size: 14px;
+  width: 98px;
+  height: 155px;
+  .sort-modal-header {
+    padding: 12px 18px 13px 16px;
+    position: relative;
+    .arrowUp {
+      content: "";
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 18px;
+      left: 60px;
+      width: 10px;
+      height: 6px;
+      background-size: 100%;
+      background-image: url("http://s3.marpple.co/files/u_18050/2018/9/original/f_5873_1537284696901_Hu1LJm8fTExZNo9SVE.png");
+    }
+  }
+  .sort-list {
+    margin: 0;
+    list-style: none;
+    padding: 0 16px 12px;
+    li {
+      cursor: pointer;
+      padding: 5px 0;
+      margin: 4px 0;
+      word-break: none;
+    }
+  }
+}
+
+.none {
+  display: none;
+}
