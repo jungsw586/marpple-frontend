@@ -6,24 +6,30 @@ import EmptyOrderList from "Components/EmptyOrderList";
 import HeaderOrderList from "Components/OrderList/Header";
 import SummaryOrderList from "Components/OrderList/Summary";
 import SummitBtn from "Components/OrderList/SummitBtn";
+import likeDATA from "DATA/likeDATA";
 import "./LikePage.scss";
 
 export default class LikePage extends Component {
   state = {
     mode: this.props.match.path,
-    dataLengthOfLike: 1
+    likeDATA: likeDATA
   };
+  // componentDidMount = () => {
+  //   fetch("http://localhost:3000/likeData.json")
+  //     .then(res => res.json())
+  //     .then(res => console.log(res));
+  // };
   render() {
-    const { mode, dataLengthOfLike } = this.state;
+    const { mode, likeDATA } = this.state;
     return (
       <>
         <NavBar />
-        {dataLengthOfLike === 0 ? (
+        {likeDATA.length === 0 ? (
           <EmptyOrderList />
         ) : (
           <div className="orderlist-background">
             <div className="orderlist-body">
-              <HeaderOrderList mode={mode} dataCount={dataLengthOfLike} />
+              <HeaderOrderList mode={mode} dataCount={likeDATA.length} />
               <div className="orderlist-top">
                 <table className="orderlist-table">
                   <thead className="table-header">
@@ -34,10 +40,14 @@ export default class LikePage extends Component {
                       <th className="col4">편집</th>
                     </tr>
                   </thead>
-                  <OrderList mode={mode} dataCount={dataLengthOfLike} />
+                  <OrderList
+                    mode={mode}
+                    dataCount={likeDATA.length}
+                    data={likeDATA}
+                  />
                 </table>
               </div>
-              {mode === "/list/cart" && <SummaryOrderList />}
+              {mode === "/list/cart" && <SummaryOrderList data={likeDATA} />}
               <SummitBtn mode={mode} />
             </div>
           </div>

@@ -7,24 +7,30 @@ import EmptyOrderList from "Components/EmptyOrderList";
 import HeaderOrderList from "Components/OrderList/Header";
 import SummaryOrderList from "Components/OrderList/Summary";
 import SummitBtn from "Components/OrderList/SummitBtn";
+import cartDATA from "DATA/cartDATA";
 import "./CartPage.scss";
 
 class CartPage extends Component {
   state = {
     mode: this.props.match.path,
-    dataLengthOfCart: 2
+    cartDATA: cartDATA
   };
+  // componentDidMount = () => {
+  //   fetch("http://localhost:3000/cartData.json")
+  //     .then(res => res.json())
+  //     .then(res => console.log(res));
+  // };
   render() {
-    const { mode, dataLengthOfCart } = this.state;
+    const { mode, cartDATA } = this.state;
     return (
       <>
         <NavBar />
-        {dataLengthOfCart === 0 ? (
+        {cartDATA.length === 0 ? (
           <EmptyOrderList />
         ) : (
           <div className="orderlist-background">
             <div className="orderlist-body">
-              <HeaderOrderList mode={mode} dataCount={dataLengthOfCart} />
+              <HeaderOrderList mode={mode} dataCount={cartDATA.length} />
               <div className="orderlist-top">
                 <table className="orderlist-table">
                   <thead className="table-header">
@@ -35,10 +41,14 @@ class CartPage extends Component {
                       <th className="col4">편집</th>
                     </tr>
                   </thead>
-                  <OrderList mode={mode} dataCount={dataLengthOfCart} />
+                  <OrderList
+                    mode={mode}
+                    dataCount={cartDATA.length}
+                    data={cartDATA}
+                  />
                 </table>
               </div>
-              {mode === "/list/cart" && <SummaryOrderList />}
+              {mode === "/list/cart" && <SummaryOrderList data={cartDATA} />}
               <SummitBtn mode={mode} />
             </div>
           </div>

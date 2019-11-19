@@ -18,13 +18,19 @@
   }
   .size-count-info {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 14px;
-    .countBox {
-      border: 1px solid #868e96;
-      text-align: center;
-      width: 46px;
+    flex-direction: column;
+    justify-content: center;
+    .count {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 5px 0;
+      .countBox {
+        border: 1px solid #868e96;
+        text-align: center;
+        width: 46px;
+      }
     }
   }
   .price-info {

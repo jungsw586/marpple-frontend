@@ -1,4 +1,5 @@
 import React from "react";
+import SizeCount from "./SizeCount";
 import "./OrderListTableContent.scss";
 
 export default function OrderListTableContent(props) {
@@ -20,10 +21,10 @@ export default function OrderListTableContent(props) {
       </td>
       <td>
         <div className="size-count-info">
-          <div className="size">L(95)</div>
-          <div className="count">
-            <div className="countBox">1</div>
-          </div>
+          <SizeCount size={"S(90)"} count={"1"} />
+          <SizeCount size={"M(95)"} count={"1"} />
+          <SizeCount size={"L(100)"} count={"1"} />
+          <SizeCount size={"XL(105)"} count={"1"} />
         </div>
       </td>
       <td>

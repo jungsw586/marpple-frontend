@@ -9,7 +9,13 @@ function OrderList(props) {
       {(() => {
         let _list = [];
         for (let i = 0; i < props.dataCount; i++) {
-          _list.push(<OrderListTableContent key={i} mode={props.mode} />);
+          _list.push(
+            <OrderListTableContent
+              key={i}
+              mode={props.mode}
+              data={props.data}
+            />
+          );
         }
         return _list;
       })()}
