@@ -15,20 +15,25 @@ export default function OrderListTableContent(props) {
             alt="product-img"
           />
           <div className="product-info-desc">
-            특양면 베이직 후드(남녀공용) [멜란지]
+            {`${props.name} [${props.color}]`}
           </div>
         </div>
       </td>
       <td>
         <div className="size-count-info">
-          <SizeCount size={"S(90)"} count={"1"} />
-          <SizeCount size={"M(95)"} count={"1"} />
-          <SizeCount size={"L(100)"} count={"1"} />
-          <SizeCount size={"XL(105)"} count={"1"} />
+          {(() => {
+            let _sizeList = [];
+            for (let key in props.size_info) {
+              _sizeList.push(
+                <SizeCount key={key} size={key} count={props.size_info[key]} />
+              );
+            }
+            return _sizeList;
+          })()}
         </div>
       </td>
       <td>
-        <div className="price-info">16,400원</div>
+        <div className="price-info">{`${props.price}원`}</div>
       </td>
       <td>
         {props.mode === "cart" ? (

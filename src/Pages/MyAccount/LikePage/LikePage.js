@@ -4,7 +4,6 @@ import OrderList from "Components/OrderList";
 import Footer from "Components/Footer";
 import EmptyOrderList from "Components/EmptyOrderList";
 import HeaderOrderList from "Components/OrderList/Header";
-import SummaryOrderList from "Components/OrderList/Summary";
 import SummitBtn from "Components/OrderList/SummitBtn";
 import likeDATA from "DATA/likeDATA";
 import "./LikePage.scss";
@@ -15,10 +14,21 @@ export default class LikePage extends Component {
     likeDATA: likeDATA
   };
   // componentDidMount = () => {
-  //   fetch("http://localhost:3000/likeData.json")
+  //   fetch("http://localhost:3000/likeDATA.json")
   //     .then(res => res.json())
   //     .then(res => console.log(res));
   // };
+  getTotalCount = data => {
+    let productCount = data.map(el =>
+      el.product.map(el =>
+        Object.values(el.size_info[0]).reduce((acc, curr) => acc + curr)
+      )
+    );
+    let totalProductCount = productCount.map(el =>
+      el.reduce((acc, curr) => acc + curr)
+    );
+    return totalProductCount.reduce((acc, curr) => acc + curr);
+  };
   render() {
     const { mode, likeDATA } = this.state;
     return (
@@ -29,7 +39,10 @@ export default class LikePage extends Component {
         ) : (
           <div className="orderlist-background">
             <div className="orderlist-body">
-              <HeaderOrderList mode={mode} dataCount={likeDATA.length} />
+              <HeaderOrderList
+                mode={mode}
+                productCount={this.getTotalCount(likeDATA)}
+              />
               <div className="orderlist-top">
                 <table className="orderlist-table">
                   <thead className="table-header">
@@ -40,14 +53,20 @@ export default class LikePage extends Component {
                       <th className="col4">편집</th>
                     </tr>
                   </thead>
-                  <OrderList
-                    mode={mode}
-                    dataCount={likeDATA.length}
-                    data={likeDATA}
-                  />
+                  {likeDATA.map((el, id) => {
+                    return (
+                      <OrderList
+                        key={id}
+                        mode={mode}
+                        productLength={el.product.length}
+                        name={el.name}
+                        data={el.product}
+                        price={el.price}
+                      />
+                    );
+                  })}
                 </table>
               </div>
-              {mode === "/list/cart" && <SummaryOrderList data={likeDATA} />}
               <SummitBtn mode={mode} />
             </div>
           </div>

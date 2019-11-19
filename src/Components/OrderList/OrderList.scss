@@ -12,18 +12,31 @@
       }
     }
   }
-  .add-color {
-    height: 60px;
-    td {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 600;
-      color: #0157ff;
-      width: 90%;
-      border-top: 2px solid #f5f5f5;
+  .table-body {
+    tr {
+      background-color: #fff;
+      border-top: 1px solid #000;
     }
-  }
-  .add-color:hover {
-    cursor: pointer;
+    td {
+      border-bottom: 2px solid #f5f5f5;
+    }
+    .add-color {
+      height: 60px;
+      td {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: #0157ff;
+        width: 90%;
+        border-bottom: 10px solid #f5f5f5;
+      }
+    }
+    .add-color:hover {
+      cursor: pointer;
+    }
+    .empty td {
+      width: 90%;
+      border-bottom: 10px solid #f5f5f5;
+    }
   }
 }

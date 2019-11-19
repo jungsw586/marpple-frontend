@@ -8,7 +8,7 @@ export default function OrderListHeader(props) {
         <>
           <div className="orderlist-header-title">
             <div className="title">My Cart</div>
-            <div className="count">{`(${props.dataCount})`}</div>
+            <div className="count">{`(${props.productCount})`}</div>
           </div>
           <div className="cart-process">
             <div className="nextArrow">장바구니</div>
@@ -20,7 +20,7 @@ export default function OrderListHeader(props) {
         <>
           <div className="orderlist-header-title">
             <div className="title">Like Item</div>
-            <div className="count">{`(${props.dataCount})`}</div>
+            <div className="count">{`(${props.productCount})`}</div>
           </div>
           <div></div>
         </>

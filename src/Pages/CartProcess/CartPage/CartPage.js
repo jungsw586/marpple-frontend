@@ -20,8 +20,25 @@ class CartPage extends Component {
   //     .then(res => res.json())
   //     .then(res => console.log(res));
   // };
+  getTotalCount = data => {
+    let productCount = data.map(el =>
+      el.product.map(el =>
+        Object.values(el.size_info[0]).reduce((acc, curr) => acc + curr)
+      )
+    );
+    let totalProductCount = productCount.map(el =>
+      el.reduce((acc, curr) => acc + curr)
+    );
+    return totalProductCount.reduce((acc, curr) => acc + curr);
+  };
+  // getTotalPrice = () => {
+  //   this.state.cartDATA.map(el=>{
+  //     return e.price * (el.product.map(el=>)
+  //   })
+  // };
   render() {
     const { mode, cartDATA } = this.state;
+    //this.getTotalPrice();
     return (
       <>
         <NavBar />
@@ -30,7 +47,10 @@ class CartPage extends Component {
         ) : (
           <div className="orderlist-background">
             <div className="orderlist-body">
-              <HeaderOrderList mode={mode} dataCount={cartDATA.length} />
+              <HeaderOrderList
+                mode={mode}
+                productCount={this.getTotalCount(cartDATA)}
+              />
               <div className="orderlist-top">
                 <table className="orderlist-table">
                   <thead className="table-header">
@@ -41,14 +61,23 @@ class CartPage extends Component {
                       <th className="col4">편집</th>
                     </tr>
                   </thead>
-                  <OrderList
-                    mode={mode}
-                    dataCount={cartDATA.length}
-                    data={cartDATA}
-                  />
+                  {cartDATA.map((el, id) => {
+                    return (
+                      <OrderList
+                        key={id}
+                        mode={mode}
+                        productLength={el.product.length}
+                        name={el.name}
+                        data={el.product}
+                        price={el.price}
+                      />
+                    );
+                  })}
                 </table>
               </div>
-              {mode === "/list/cart" && <SummaryOrderList data={cartDATA} />}
+              {mode === "/list/cart" && (
+                <SummaryOrderList totalCount={this.getTotalCount(cartDATA)} />
+              )}
               <SummitBtn mode={mode} />
             </div>
           </div>

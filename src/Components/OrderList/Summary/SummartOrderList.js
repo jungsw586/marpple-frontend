@@ -2,34 +2,6 @@ import React, { Component } from "react";
 import "./SummaryOrderList.scss";
 
 export default class SummartOrderList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      totalCount: null,
-      Price: null,
-      deliveryCharge: 2500,
-      totalPrice: null
-    };
-  }
-  getTotalCount = () => {
-    let _counts = [];
-    this.props.data.forEach(el => _counts.push(el.count));
-    this.setState({ totalCount: _counts.reduce((acc, curr) => acc + curr) });
-  };
-  getPrice = () => {
-    let _Price = [];
-    this.props.data.forEach(el => _Price.push(el.count * el.price));
-    _Price.reduce((acc, curr) => acc + curr) >= 50000
-      ? this.setState({
-          Price: _Price.reduce((acc, curr) => acc + curr),
-          deliveryCharge: 0
-        })
-      : this.setState({ Price: _Price.reduce((acc, curr) => acc + curr) });
-  };
-  componentDidMount = () => {
-    this.getTotalCount();
-    this.getPrice();
-  };
   render() {
     return (
       <table className="orderlist-table-summary">
@@ -46,22 +18,22 @@ export default class SummartOrderList extends Component {
         <tbody className="table-summary-body">
           <tr>
             <td className="summary-count">
-              <div>{`${this.state.totalCount}개`}</div>
+              <div>{`${this.props.totalCount}개`}</div>
             </td>
             <td className="summary-price">
-              <div>{`${this.state.Price}원`}</div>
+              <div>{`${this.props.price}원`}</div>
             </td>
             <td>
               <div className="plusIcon">+</div>
             </td>
             <td className="summary-delivery">
-              <div>{this.state.deliveryCharge}</div>
+              <div>{this.props.deliveryCharge}</div>
             </td>
             <td>
               <div className="equalIcon">=</div>
             </td>
             <td className="summary-total">
-              <div>{`${this.state.Price + this.state.deliveryCharge}원`}</div>
+              <div>{`${this.props.totalPrice}원`}</div>
             </td>
           </tr>
         </tbody>
