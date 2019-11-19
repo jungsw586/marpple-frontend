@@ -5,7 +5,7 @@ import { KAKAO_KEY } from "config";
 
 class NavBar extends Component {
   state = {
-    logOn: true,
+    logOn: false,
     signuploginModalSwitch: false,
     signupModalState: "signup"
   };
@@ -25,26 +25,49 @@ class NavBar extends Component {
   };
 
   handlerLogout = () => {
+    localStorage.removeItem("wemarpple-token");
     this.setState(
       {
         logOn: false,
         signuploginModalSwitch: false
       },
-      this.props.history.push("/")
+      () => this.props.history.push("/")
     );
   };
 
   componentDidMount = () => {
     !window.Kakao.isInitialized() && window.Kakao.init(KAKAO_KEY);
+    localStorage.getItem("wemarpple-token")
+      ? this.setState({ logOn: true })
+      : this.setState({ logOn: false }, () => this.props.history.push("/"));
   };
 
   handlerKakaoLoginSignup = () => {
     window.Kakao.Auth.login({
-      success: function(authObj) {
-        console.log(JSON.stringify(authObj));
-        alert(JSON.stringify(authObj));
+      success: authObj => {
+        fetch("http://10.58.2.201:8000/user/kakao-login", {
+          method: "get",
+          headers: {
+            Authorization: authObj.access_token
+          }
+        })
+          .then(res => res.json())
+          .then(res => {
+            if (res.jwt_token) {
+              localStorage.setItem("wemarpple-token", res.jwt_token);
+              this.setState(
+                {
+                  logOn: true,
+                  signuploginModalSwitch: false
+                },
+                () => this.props.history.push("/")
+              );
+            } else {
+              alert("Login Failed");
+            }
+          });
       },
-      fail: function(err) {
+      fail: err => {
         alert(JSON.stringify(err));
       }
     });
