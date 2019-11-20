@@ -4,18 +4,17 @@ import OrderList from "Components/OrderList";
 import Footer from "Components/Footer";
 import EmptyOrderList from "Components/EmptyOrderList";
 import HeaderOrderList from "Components/OrderList/Header";
-import SummaryOrderList from "Components/OrderList/Summary";
 import SummitBtn from "Components/OrderList/SummitBtn";
-import cartDATA from "DATA/cartDATA";
-import "./CartPage.scss";
+import likeDATA from "DATA/likeDATA";
+import "./LikePage.scss";
 
-export default class CartPage extends Component {
+export default class LikePage extends Component {
   state = {
     mode: this.props.match.path,
-    cartDATA: cartDATA
+    likeDATA: likeDATA
   };
   // componentDidMount = () => {
-  //   fetch("http://localhost:3000/cartData.json")
+  //   fetch("http://localhost:3000/likeDATA.json")
   //     .then(res => res.json())
   //     .then(res => console.log(res));
   // };
@@ -30,32 +29,19 @@ export default class CartPage extends Component {
     );
     return totalProductCount.reduce((acc, curr) => acc + curr);
   };
-  getTotalPrice = data => {
-    let totalPrice = data.map(el => {
-      return (
-        el.price *
-        el.product
-          .map(el =>
-            Object.values(el.size_info[0]).reduce((acc, curr) => acc + curr)
-          )
-          .reduce((acc, curr) => acc + curr)
-      );
-    });
-    return totalPrice.reduce((acc, curr) => acc + curr);
-  };
   render() {
-    const { mode, cartDATA } = this.state;
+    const { mode, likeDATA } = this.state;
     return (
       <>
         <NavBar />
-        {cartDATA.length === 0 ? (
+        {likeDATA.length === 0 ? (
           <EmptyOrderList />
         ) : (
           <div className="orderlist-background">
             <div className="orderlist-body">
               <HeaderOrderList
                 mode={mode}
-                productCount={this.getTotalCount(cartDATA)}
+                productCount={this.getTotalCount(likeDATA)}
               />
               <div className="orderlist-top">
                 <table className="orderlist-table">
@@ -67,7 +53,7 @@ export default class CartPage extends Component {
                       <th className="col4">편집</th>
                     </tr>
                   </thead>
-                  {cartDATA.map((el, id) => {
+                  {likeDATA.map((el, id) => {
                     return (
                       <OrderList
                         key={id}
@@ -81,12 +67,6 @@ export default class CartPage extends Component {
                   })}
                 </table>
               </div>
-              {mode === "/list/cart" && (
-                <SummaryOrderList
-                  totalCount={this.getTotalCount(cartDATA)}
-                  totalPrice={this.getTotalPrice(cartDATA)}
-                />
-              )}
               <SummitBtn mode={mode} />
             </div>
           </div>

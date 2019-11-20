@@ -1,0 +1,135 @@
+@import "../../Styles/config.scss";
+
+@media #{$desktop} {
+  .orderlist-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    .orderlist-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 70%;
+      margin: 50px 0;
+      .orderlist-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        padding: 40px 0;
+        .orderlist-header-title {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+          }
+          .count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #868e96;
+          }
+        }
+        .cart-process {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          font-size: 14px;
+          .nextArrow::after {
+            content: ">";
+            margin: 0 10px;
+          }
+        }
+      }
+      .orderlist-empty-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #fff;
+        .orderlist-empty-img-box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 60px 0;
+          .empty-text {
+            padding-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media #{$ipad} {
+  .orderlist-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    .orderlist-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 70%;
+      margin: 50px 0;
+      .orderlist-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        padding: 40px 0;
+        .orderlist-header-title {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+          }
+          .count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #868e96;
+          }
+        }
+        .cart-process {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          font-size: 14px;
+          .nextArrow::after {
+            content: ">";
+            margin: 0 10px;
+          }
+        }
+      }
+      .orderlist-empty-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #fff;
+        .orderlist-empty-img-box {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 60px 0;
+          .empty-text {
+            padding-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}
