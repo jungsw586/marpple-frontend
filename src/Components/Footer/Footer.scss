@@ -5,6 +5,12 @@
   width: 100%;
   background-color: #292a2b;
   color: #868e96;
+
+  ul {
+    li {
+      list-style: none;
+    }
+  }
   .footer-body {
     display: flex;
     flex-direction: column;

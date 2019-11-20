@@ -31,14 +31,21 @@ class CartPage extends Component {
     );
     return totalProductCount.reduce((acc, curr) => acc + curr);
   };
-  // getTotalPrice = () => {
-  //   this.state.cartDATA.map(el=>{
-  //     return e.price * (el.product.map(el=>)
-  //   })
-  // };
+  getTotalPrice = data => {
+    let totalPrice = data.map(el => {
+      return (
+        el.price *
+        el.product
+          .map(el =>
+            Object.values(el.size_info[0]).reduce((acc, curr) => acc + curr)
+          )
+          .reduce((acc, curr) => acc + curr)
+      );
+    });
+    return totalPrice;
+  };
   render() {
     const { mode, cartDATA } = this.state;
-    //this.getTotalPrice();
     return (
       <>
         <NavBar />
@@ -76,7 +83,10 @@ class CartPage extends Component {
                 </table>
               </div>
               {mode === "/list/cart" && (
-                <SummaryOrderList totalCount={this.getTotalCount(cartDATA)} />
+                <SummaryOrderList
+                  totalCount={this.getTotalCount(cartDATA)}
+                  totalPrice={this.getTotalPrice(cartDATA)}
+                />
               )}
               <SummitBtn mode={mode} />
             </div>
