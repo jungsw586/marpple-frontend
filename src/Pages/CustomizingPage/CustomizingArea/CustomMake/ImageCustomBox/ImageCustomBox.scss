@@ -1,0 +1,13 @@
+//준식
+.custom-box {
+  border: 2px solid #000;
+  width: 40%;
+  height: 50%;
+  position: relative;
+  overflow: hidden;
+  .uploaded-image {
+    position: absolute;
+    // width: 50%;
+    background-repeat: no-repeat;
+  }
+} //준식

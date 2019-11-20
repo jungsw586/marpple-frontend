@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import {
   itemChange,
   imageUpload,
@@ -7,11 +8,13 @@ import {
   itemFrontImg,
   itemBackImg
 } from "config";
+import ImageCustomBox from "./ImageCustomBox";
 import "./CustomMake.scss";
 
 export class CustomMake extends Component {
   state = {
-    front: true
+    front: true,
+    image: ""
   };
 
   handleFront = trueOrFalse => {
@@ -20,8 +23,29 @@ export class CustomMake extends Component {
     });
   };
 
+  fileUploadHandler = event => {
+    //selectedFile
+    let file = event.target.files[0];
+    this.setState({ selectedFile: file }, () => {
+      //upload
+      const fd = new FormData();
+      const { selectedFile } = this.state;
+      console.log("selectedFile : " + this.state.selectedFile);
+      if (selectedFile) {
+        fd.append("picture", selectedFile, selectedFile.name);
+        axios.post("http://10.58.4.236:8001/custom/image-url", fd).then(res => {
+          this.setState({ image: res.data.images[0] }, () =>
+            this.props.handleMode("image")
+          );
+          console.log("img-url : " + this.state.image);
+        });
+      }
+    });
+  };
+
   render() {
-    const { front } = this.state;
+    const { front, image } = this.state;
+    const { imageOption, imageActive } = this.props;
     return (
       <div className="make">
         <div className="item">
@@ -32,7 +56,14 @@ export class CustomMake extends Component {
                 ? `url(${itemFrontImg})`
                 : `url(${itemBackImg})`
             }}
-          ></div>
+          >
+            {/* 준식 이미지 커스텀 */}
+            <ImageCustomBox
+              imageOption={imageOption}
+              imageActive={imageActive}
+              image={image}
+            />
+          </div>
         </div>
         <div className="front-back">
           <div className="btn-container">
@@ -63,13 +94,24 @@ export class CustomMake extends Component {
               ></div>
               <div className="selector-name">상품변경</div>
             </div>
-            <div className="selector-container">
+            {/* 이미지업로드 */}
+            <div
+              className="selector-container"
+              onClick={() => this.fileInput.click()}
+            >
+              <input
+                type="file"
+                style={{ display: "none" }}
+                onChange={this.fileUploadHandler}
+                ref={fileInput => (this.fileInput = fileInput)}
+              />
               <div
                 className="selector-icon"
                 style={{ backgroundImage: `url(${imageUpload})` }}
               ></div>
               <div className="selector-name">이미지 업로드</div>
             </div>
+            {/* 이미지업로드 */}
             <div className="selector-container">
               <div
                 className="selector-icon"

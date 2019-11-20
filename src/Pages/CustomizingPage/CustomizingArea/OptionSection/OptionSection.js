@@ -13,7 +13,10 @@ export class OptionSection extends Component {
       return <li>{el}</li>;
     });
     return (
-      <div className="option-section">
+      <div
+        className="option-section"
+        style={{ display: this.props.active ? "block" : "none" }}
+      >
         <div className="selector-area">
           <div className="item-name">{data.name}</div>
           <div className="item-price">{data.price.toLocaleString()}원</div>
