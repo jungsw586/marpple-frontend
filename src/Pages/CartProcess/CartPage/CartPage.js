@@ -42,7 +42,7 @@ class CartPage extends Component {
           .reduce((acc, curr) => acc + curr)
       );
     });
-    return totalPrice;
+    return totalPrice.reduce((acc, curr) => acc + curr);
   };
   render() {
     const { mode, cartDATA } = this.state;
