@@ -1,0 +1,11 @@
+.make-menu {
+  width: 100%;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  .menu-item-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

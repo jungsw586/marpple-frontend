@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.customizing-section {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #efefef;
+  .custom-area {
+    width: 100%;
+    border-right: 1px solid #efefef;
+  }
+}
