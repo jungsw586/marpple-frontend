@@ -6,7 +6,7 @@ import { KAKAO_KEY } from "config";
 class NavBar extends Component {
   state = {
     mode: this.props.match.path,
-    logOn: false,
+    logOn: true, //=>back 연결후 false로 수정
     signuploginModalSwitch: false,
     signupModalState: "signup"
   };
@@ -38,15 +38,16 @@ class NavBar extends Component {
 
   componentDidMount = () => {
     !window.Kakao.isInitialized() && window.Kakao.init(KAKAO_KEY);
-    if (this.state.mode === "/list/cart" || this.state.mode === "/list/like") {
-      localStorage.getItem("wemarpple-token")
-        ? this.setState({ logOn: true })
-        : this.setState({ logOn: false }, () => this.props.history.push("/"));
-    } else {
-      localStorage.getItem("wemarpple-token")
-        ? this.setState({ logOn: true })
-        : this.setState({ logOn: false });
-    }
+    // <-------------------------back 연결 후 주석 해제-------------------------->
+    // if (this.state.mode === "/list/cart" || this.state.mode === "/list/like") {
+    //   localStorage.getItem("wemarpple-token")
+    //     ? this.setState({ logOn: true })
+    //     : this.setState({ logOn: false }, () => this.props.history.push("/"));
+    // } else {
+    //   localStorage.getItem("wemarpple-token")
+    //     ? this.setState({ logOn: true })
+    //     : this.setState({ logOn: false });
+    // }
   };
 
   handlerKakaoLoginSignup = () => {
