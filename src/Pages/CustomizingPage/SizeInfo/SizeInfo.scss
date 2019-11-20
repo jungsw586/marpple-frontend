@@ -1,0 +1,44 @@
+.size-info {
+  margin: 50px auto;
+  padding: 50px 0px 0px;
+  border-top: 1px solid #000;
+  max-width: 1025px;
+  .size-info-title {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: center;
+    border-spacing: 2px;
+    border-color: grey;
+    display: table;
+    th,
+    td {
+      padding: 11px 0;
+      font-size: 12px;
+      border: 1px solid #e9ecef;
+    }
+    .first-row {
+      background-color: #fafafa;
+    }
+  }
+  .size-about {
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding-left: 19px;
+      background: url("http://s3.marpple.co/files/u_18053/2018/10/original/f_5967_1539181292187_BzObFQ8cH7bFS4X1vL6F.png");
+      background-repeat: no-repeat;
+      background-size: 8px 8px;
+      background-position: 3px 9px;
+      line-height: 1.83;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+  }
+}

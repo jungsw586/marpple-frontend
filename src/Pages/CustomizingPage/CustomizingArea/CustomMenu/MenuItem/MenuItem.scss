@@ -1,0 +1,20 @@
+.menu-item {
+  margin-right: 20px;
+  opacity: 0.3;
+  .icon-container {
+    .icon {
+      margin: 0 auto;
+      width: 28px;
+      height: 28px;
+      background-position: 5px 5px;
+      background-repeat: no-repeat;
+    }
+  }
+  .text-container {
+    .text {
+      margin: 0 auto;
+      font-size: 8px;
+      text-align: center;
+    }
+  }
+}

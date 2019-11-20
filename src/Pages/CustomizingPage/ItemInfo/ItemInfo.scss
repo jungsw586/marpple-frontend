@@ -1,0 +1,51 @@
+.item-info {
+  margin: 50px 144px 0px;
+  max-width: 1025px;
+  margin: 0 auto;
+  .product-info-title {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .product-basic-info {
+    font-size: 14px;
+    margin: 14px 0px;
+  }
+  .product-detail-info {
+    margin: 12px 18px 20px;
+    padding: 0;
+    font-size: 14px;
+    li {
+      padding-bottom: 8px;
+      list-style: disc;
+    }
+  }
+  .laundry-info-title {
+    margin: 14px 0px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .laundry-info {
+    margin: 12px 18px 20px;
+    padding: 0;
+    li {
+      font-size: 14px;
+      padding: 0 0 8px;
+      list-style: disc;
+    }
+  }
+  .model-info-title {
+    margin: 14px 0px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .model-info {
+    margin: 12px 18px 20px;
+    padding: 0;
+    li {
+      font-size: 14px;
+      padding: 0 0 8px;
+      list-style: disc;
+    }
+  }
+}

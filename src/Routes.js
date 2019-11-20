@@ -4,6 +4,7 @@ import HomePage from "Pages/HomePage";
 import LikePage from "Pages/MyAccount/LikePage";
 import CartPage from "Pages/CartProcess/CartPage";
 import MenuPage from "Pages/MenuPage";
+import CustomizingPage from "Pages/CustomizingPage";
 
 export class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ export class Routes extends Component {
           <Route exact path="/menu" component={MenuPage} />
           <Route exact path="/list/cart" component={CartPage} />
           <Route exact path="/list/like" component={LikePage} />
+          <Route exact path="/customize" component={CustomizingPage} />
         </Switch>
       </Router>
     );

@@ -1,0 +1,94 @@
+.make {
+  background-color: #fbfbfb;
+  padding: 100px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: calc(100% - 66px);
+  .item {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .item-image {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+  .front-back {
+    background: #e9ecef;
+    height: 30px;
+    padding: 4px;
+    border-radius: 30px;
+    position: absolute;
+    top: 60px;
+    right: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    .btn-container {
+      display: flex;
+      .btn {
+        border-radius: 30px;
+        padding: 4px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        cursor: pointer;
+        &:hover {
+          font-weight: 600;
+        }
+      }
+      .front {
+        margin-right: -5px;
+      }
+      .selected {
+        background: #0157ff;
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+  .customize-menu {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 70px;
+    .customize-menu-selector {
+      margin: 0 auto;
+      .selector-container {
+        margin: 20px 0px;
+        cursor: pointer;
+        .selector-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          margin: 0px;
+          background-size: 30px;
+          background-position: 50% 50%;
+          background-color: #fff;
+          z-index: 100;
+          position: relative;
+          background-repeat: no-repeat;
+          box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+          &:hover {
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+          }
+        }
+        .selector-name {
+          padding: 5px 0px;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
