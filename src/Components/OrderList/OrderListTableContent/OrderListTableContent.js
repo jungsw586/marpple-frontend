@@ -1,6 +1,7 @@
 import React from "react";
 import SizeCount from "./SizeCount";
 import "./OrderListTableContent.scss";
+import { AddComma } from "config";
 
 export default function OrderListTableContent(props) {
   return (
@@ -9,9 +10,7 @@ export default function OrderListTableContent(props) {
         <div className="product-info">
           <img
             className="product-info-img"
-            src={
-              "https://s3.marpple.co/files/u_1085120/2019/9/150/f_787427_1567581236777_KLX5GtLma0QZ8M4Sd6ih.png?canvas=v2"
-            }
+            src={props.image}
             alt="product-img"
           />
           <div className="product-info-desc">
@@ -24,16 +23,22 @@ export default function OrderListTableContent(props) {
           {(() => {
             let _sizeList = [];
             for (let key in props.size_info) {
-              _sizeList.push(
-                <SizeCount key={key} size={key} count={props.size_info[key]} />
-              );
+              if (props.size_info[key] !== 0) {
+                _sizeList.push(
+                  <SizeCount
+                    key={key}
+                    size={key}
+                    count={props.size_info[key]}
+                  />
+                );
+              }
             }
             return _sizeList;
           })()}
         </div>
       </td>
       <td>
-        <div className="price-info">{`${props.price}원`}</div>
+        <div className="price-info">{`${AddComma(props.price)}원`}</div>
       </td>
       <td>
         {props.mode === "cart" ? (
