@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import NavBar from "Components/NavBar";
 import OrderList from "Components/OrderList";
 import Footer from "Components/Footer";
@@ -9,7 +10,7 @@ import SummitBtn from "Components/OrderList/SummitBtn";
 import cartDATA from "DATA/cartDATA";
 import "./CartPage.scss";
 
-export default class CartPage extends Component {
+class CartPage extends Component {
   state = {
     mode: this.props.match.path,
     cartDATA: cartDATA
@@ -96,3 +97,4 @@ export default class CartPage extends Component {
     );
   }
 }
+export default withRouter(CartPage);

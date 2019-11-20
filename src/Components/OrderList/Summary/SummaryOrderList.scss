@@ -1,0 +1,46 @@
+.orderlist-table-summary {
+  margin-top: 60px;
+  width: 100%;
+  border-top: 1px solid #000;
+  background-color: #fff;
+  .table-summary-header {
+    .summary-col4 {
+      width: 25%;
+    }
+    tr {
+      height: 50px;
+      th {
+        font-size: 14px;
+        font-weight: bold;
+
+        border-bottom: 2px solid #f5f5f5;
+      }
+    }
+  }
+  .table-summary-body {
+    tr {
+      height: 80px;
+      td div {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .summary-total div {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .equalIcon,
+      .plusIcon {
+        width: 24px;
+        height: 24px;
+        color: #868e96;
+        border-radius: 12px;
+        margin: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.orderlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding: 40px 0;
+  .orderlist-header-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+    }
+    .count {
+      font-size: 24px;
+      font-weight: bold;
+      color: #868e96;
+    }
+  }
+  .cart-process {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    .nextArrow::after {
+      content: ">";
+      margin: 0 10px;
+    }
+  }
+}
