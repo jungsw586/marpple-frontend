@@ -1,0 +1,57 @@
+.table-body {
+  .product-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 20px;
+    img {
+      width: 100px;
+      height: 100px;
+      padding: 20px;
+    }
+    .product-info-desc {
+      font-size: 14px;
+      color: #000;
+    }
+  }
+  .size-count-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .count {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 5px 0;
+      .countBox {
+        border: 1px solid #e9ecef;
+        text-align: center;
+        width: 46px;
+      }
+    }
+  }
+  .price-info {
+    text-align: center;
+    font-size: 14px;
+  }
+  .edit-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    div {
+      width: 88px;
+      text-align: center;
+      border: 1px solid #d5dbe0;
+      font-size: 10px;
+      padding: 5px;
+      margin: 2px 0;
+    }
+    div:hover {
+      cursor: pointer;
+      color: #0157ff;
+    }
+  }
+}
