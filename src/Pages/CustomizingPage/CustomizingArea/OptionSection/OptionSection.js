@@ -3,7 +3,7 @@ import "./OptionSection.scss";
 
 export class OptionSection extends Component {
   render() {
-    const { data } = this.props;
+    const { data, openItemChangeModal, openAddCartModal } = this.props;
     const color = data.color;
     const size = data.size;
     const color_list = color.map(el => {
@@ -18,7 +18,9 @@ export class OptionSection extends Component {
           <div className="item-name">{data.name}</div>
           <div className="item-price">{data.price.toLocaleString()}원</div>
           <div className="item-change">
-            <div className="item-change-btn">상품변경</div>
+            <div className="item-change-btn" onClick={openItemChangeModal}>
+              상품변경
+            </div>
           </div>
           <div className="color-section">
             <div className="color-title">색상</div>
@@ -30,7 +32,7 @@ export class OptionSection extends Component {
           </div>
         </div>
         <div className="button-area">
-          <div className="button-box">
+          <div className="button-box" onClick={openAddCartModal}>
             <div className="button-text">장바구니 담기</div>
           </div>
         </div>
