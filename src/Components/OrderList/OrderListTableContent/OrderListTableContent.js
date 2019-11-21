@@ -1,7 +1,6 @@
 import React from "react";
 import SizeCount from "./SizeCount";
 import "./OrderListTableContent.scss";
-import { AddComma } from "config";
 
 export default function OrderListTableContent(props) {
   return (
@@ -38,7 +37,7 @@ export default function OrderListTableContent(props) {
         </div>
       </td>
       <td>
-        <div className="price-info">{`${AddComma(props.price)}원`}</div>
+        <div className="price-info">{`${props.price.toLocaleString()}원`}</div>
       </td>
       <td>
         {props.mode === "cart" ? (

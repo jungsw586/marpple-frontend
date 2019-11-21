@@ -1,6 +1,5 @@
 import React from "react";
 import "./SummaryOrderList.scss";
-import { AddComma } from "config";
 
 export default function SummartOrderList(props) {
   return (
@@ -21,7 +20,7 @@ export default function SummartOrderList(props) {
             <div>{`${props.totalCount}개`}</div>
           </td>
           <td className="summary-price">
-            <div>{`${AddComma(props.totalPrice)}원`}</div>
+            <div>{`${props.totalPrice.toLocaleString()}원`}</div>
           </td>
           <td>
             <div className="plusIcon">+</div>
@@ -33,11 +32,10 @@ export default function SummartOrderList(props) {
             <div className="equalIcon">=</div>
           </td>
           <td className="summary-total">
-            <div>{`${AddComma(
-              props.totalPrice < 50000
-                ? props.totalPrice + 2500
-                : props.totalPrice
-            )}원`}</div>
+            <div>{`${(props.totalPrice < 50000
+              ? props.totalPrice + 2500
+              : props.totalPrice
+            ).toLocaleString()}원`}</div>
           </td>
         </tr>
       </tbody>

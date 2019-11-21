@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import MenuAside from "./MenuAside";
 import MenuMain from "./MenuMain";
+import NavBar from "Components/NavBar";
 import "./MenuPage.scss";
 
 export class MenuPage extends Component {
   render() {
     return (
       <>
-        <div className="NavBar">WE-MARPPLE</div>
+        <NavBar />
         <div className="menu-page">
           <div className="menu-container">
             <MenuAside />
