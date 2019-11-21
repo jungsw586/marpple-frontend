@@ -84,6 +84,9 @@
             }
           }
         }
+        .selected-option-box:hover {
+          cursor: pointer;
+        }
         .select-option-box {
           position: absolute;
           top: 38px;
@@ -371,15 +374,15 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #000;
-    margin-bottom: 70px;
+    background-color: #212529;
+    margin-bottom: 5px;
+    cursor: pointer;
 
     .button-box {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 56px;
-      cursor: pointer;
       .button-text {
         color: #fff;
         padding: 20px;

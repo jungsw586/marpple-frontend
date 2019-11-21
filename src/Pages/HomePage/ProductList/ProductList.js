@@ -7,10 +7,10 @@ export default class ProductList extends Component {
     return (
       <div className="homepage-product-list-body">
         <div className="homepage-product-list-header">
-          <Link className="product-list-title" to={"/"}>
+          <Link className="product-list-title" to={"/menu"}>
             Clothes Custom
           </Link>
-          <Link className="product-list-goDetail" to={"/"}>
+          <Link className="product-list-goDetail" to={"/menu"}>
             Show All
           </Link>
         </div>

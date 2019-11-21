@@ -28,7 +28,10 @@ export default class TextOption extends Component {
           <div className="text-style-selector-area">
             <div className="text-style-selector-title">서체 선택</div>
             <div className="font-style-selectorBox">
-              <div className="selected-option-box">
+              <div
+                className="selected-option-box"
+                onClick={this.handlerSpreadFontOption}
+              >
                 <div
                   className="selected-option-value"
                   style={{ fontFamily: this.props.fontFamily }}
@@ -41,7 +44,6 @@ export default class TextOption extends Component {
                     "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                   }
                   alt="spread-img"
-                  onClick={this.handlerSpreadFontOption}
                 />
               </div>
               {this.state.SpreadFontOption && (
@@ -166,7 +168,7 @@ export default class TextOption extends Component {
               <div className="text-rotate-X-title">상하 반전</div>
               <div
                 className="rotateX-value"
-                onClick={this.props.handlerRotateXOption}
+                onClick={this.props.handlerTextRotateXOption}
               >
                 <div className={this.props.activeX && `active`}>ON</div>
                 <div className={!this.props.activeX && `active`}>OFF</div>
@@ -174,7 +176,7 @@ export default class TextOption extends Component {
             </div>
             <div
               className="text-rotate-Y"
-              onClick={this.props.handlerRotateYOption}
+              onClick={this.props.handlerTextRotateYOption}
             >
               <div className="text-rotate-Y-title">좌우 반전</div>
               <div className="rotateY-value">
@@ -243,7 +245,7 @@ export default class TextOption extends Component {
             </div>
           </div>
         </div>
-        <div className="button-area">
+        <div className="button-area" onClick={this.props.openAddCartModal}>
           <div className="button-box">
             <div className="button-text">장바구니 담기</div>
           </div>

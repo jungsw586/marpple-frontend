@@ -17,7 +17,10 @@ export class ProductItem extends Component {
     const maxSize = size[size.length - 1];
 
     return (
-      <div className="product-item-container">
+      <div
+        className="product-item-container"
+        onClick={this.props.goCustomizePage}
+      >
         <div className="item-image-container">
           <div
             className="item-image"

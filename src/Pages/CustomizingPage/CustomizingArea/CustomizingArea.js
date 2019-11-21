@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import CustomMenu from "./CustomMenu";
 import CustomMake from "./CustomMake";
 import OptionSection from "./OptionSection";
-import TextSection from "./TextOption";
+import ImageOption from "./ImageOption";
+import { AddProperty } from "config";
+import TextOption from "./TextOption";
+import AddCartModal from "Components/Modal/AddCartModal";
+import ItemChangeModal from "Components/Modal/ItemChangeModal";
 import "./CustomizingArea.scss";
 import FontColorDATA from "DATA/fontColor";
 import FontFmailyDATA from "DATA/fontFamily";
@@ -13,7 +17,15 @@ export class CustomizingArea extends Component {
     fontFamilyData: FontFmailyDATA,
     width: 0,
     height: 0,
-    mode: "default",
+    mode: "image",
+    imageOption: {
+      width: 200,
+      opacity: 0.5,
+      top: 50,
+      left: 5
+    },
+    rotateX: false,
+    rotateY: false,
     textOption: {
       left: "0%",
       top: "35%",
@@ -28,7 +40,9 @@ export class CustomizingArea extends Component {
     italic: false,
     activeTextDeco: null,
     textRotateX: false,
-    textRotateY: false
+    textRotateY: false,
+    addCartModal: false,
+    itemChangeModal: false
   };
 
   componentDidMount() {
@@ -45,16 +59,6 @@ export class CustomizingArea extends Component {
       width: window.innerWidth,
       height: window.innerHeight - 96
     });
-  };
-
-  handlerTextMode = () => {
-    //made by SW
-    this.setState({ mode: "text" });
-  };
-
-  handlerDefaultMode = () => {
-    //made by SW
-    this.setState({ mode: "default" });
   };
 
   handlerTextOption = (option, value, fontColor) => {
@@ -117,7 +121,7 @@ export class CustomizingArea extends Component {
     }
   };
 
-  handlerRotateXOption = () => {
+  handlerTextRotateXOption = () => {
     let result = this.state.textRotateX ? 0 : 180;
     let newOption = (() => {
       if (!this.state.textRotateX && !this.state.textRotateY) {
@@ -139,7 +143,7 @@ export class CustomizingArea extends Component {
     });
   };
 
-  handlerRotateYOption = () => {
+  handlerTextRotateYOption = () => {
     let result = this.state.textRotateY ? 0 : 180;
     let newOption = (() => {
       if (!this.state.textRotateX && !this.state.textRotateY) {
@@ -164,13 +168,124 @@ export class CustomizingArea extends Component {
   handleMode = mode => {
     this.setState({ mode });
   };
+
+  //-----------------------------------------------------------------
+  handlerMoveDownOption = (option, value) => {
+    const { imageOption } = this.state;
+    const currentTop = imageOption.top;
+    const changedTop = currentTop + value;
+    let newOption = AddProperty({ [option]: changedTop }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handlerMoveTopOption = (option, value) => {
+    const { imageOption } = this.state;
+    const currentTop = imageOption.top;
+    const changedTop = currentTop - value;
+    let newOption = AddProperty({ [option]: changedTop }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handlerMoveLeftOption = (option, value) => {
+    const { imageOption } = this.state;
+    const currentLeft = imageOption.left;
+    const changedLeft = currentLeft - value;
+    let newOption = AddProperty({ [option]: changedLeft }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handlerMoveRightOption = (option, value) => {
+    const { imageOption } = this.state;
+    const currentLeft = imageOption.left;
+    const changedLeft = currentLeft + value;
+    let newOption = AddProperty({ [option]: changedLeft }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handleSizeOption = (option, value) => {
+    const { imageOption } = this.state;
+    let newOption = AddProperty({ [option]: value }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handleOpacityOption = (option, value) => {
+    const { imageOption } = this.state;
+    let newOption = AddProperty({ [option]: value }, imageOption);
+    this.setState({
+      imageOption: newOption
+    });
+  };
+  handlerRotateXOption = () => {
+    const { imageOption, rotateX, rotateY } = this.state;
+    let result = rotateX ? 0 : 180;
+    let newOption = (() => {
+      if (!rotateX && !rotateY) {
+        return AddProperty({ transform: `rotateX(${result}deg)` }, imageOption);
+      } else if (rotateX && rotateY) {
+        return AddProperty(
+          { transform: `rotateY(${result + 180}deg)` },
+          imageOption
+        );
+      } else if (!rotateX && rotateY) {
+        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+      } else if (rotateX && !rotateY) {
+        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+      }
+    })();
+    this.setState({
+      imageOption: newOption,
+      rotateX: !rotateX
+    });
+  };
+  handlerRotateYOption = () => {
+    const { imageOption, rotateX, rotateY } = this.state;
+    let result = rotateY ? 0 : 180;
+    let newOption = (() => {
+      if (!rotateX && !rotateY) {
+        return AddProperty({ transform: `rotateY(${result}deg)` }, imageOption);
+      } else if (rotateX && rotateY) {
+        return AddProperty(
+          { transform: `rotateX(${result + 180}deg)` },
+          imageOption
+        );
+      } else if (!rotateX && rotateY) {
+        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+      } else if (rotateX && !rotateY) {
+        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+      }
+    })();
+    this.setState({
+      imageOption: newOption,
+      rotateY: !rotateY
+    });
+  };
+  //-----------------------------------------------------------------
+  openAddCartModal = () => {
+    this.setState({ addCartModal: true });
+  };
+
+  closeAddCartModal = () => {
+    this.setState({ addCartModal: false });
+  };
+
+  openItemChangeModal = () => {
+    this.setState({ itemChangeModal: true });
+  };
+
+  closeItemChangeModal = () => {
+    this.setState({ itemChangeModal: false });
+  };
+
   render() {
+    const { mode, height, imageOption } = this.state;
     const { data } = this.props;
     return (
-      <div
-        className="customizing-section"
-        style={{ height: this.state.height }}
-      >
+      <div className="customizing-section" style={{ height: height }}>
         <div className="custom-area">
           <CustomMenu />
           <CustomMake
@@ -179,14 +294,24 @@ export class CustomizingArea extends Component {
             mode={this.state.mode}
             textOption={this.state.textOption}
             handleMode={mode => this.handleMode(mode)}
+            openItemChangeModal={this.openItemChangeModal}
+            imageActive={mode === "image"}
+            imageOption={imageOption}
           />
         </div>
         {(() => {
           if (this.state.mode === "default") {
-            return <OptionSection data={data} />;
+            return (
+              <OptionSection
+                data={data}
+                openItemChangeModal={this.openItemChangeModal}
+                openAddCartModal={this.openAddCartModal}
+                active={mode === "default"}
+              />
+            );
           } else if (this.state.mode === "text") {
             return (
-              <TextSection
+              <TextOption
                 handleMode={mode => this.handleMode(mode)}
                 activeX={this.state.textRotateX}
                 activeY={this.state.textRotateY}
@@ -198,16 +323,50 @@ export class CustomizingArea extends Component {
                 handlerTextOption={(option, value, fontColor) =>
                   this.handlerTextOption(option, value, fontColor)
                 }
+                handlerTextRotateXOption={this.handlerTextRotateXOption}
+                handlerTextRotateYOption={this.handlerTextRotateYOption}
+                openAddCartModal={this.openAddCartModal}
+              />
+            );
+          } else if (this.state.mode === "image") {
+            return (
+              <ImageOption
+                active={mode === "image"}
+                handleMode={mode => this.handleMode(mode)}
+                handlerMoveDownOption={(option, value) =>
+                  this.handlerMoveDownOption(option, value)
+                }
+                handlerMoveTopOption={(option, value) =>
+                  this.handlerMoveTopOption(option, value)
+                }
+                handlerMoveLeftOption={(option, value) =>
+                  this.handlerMoveLeftOption(option, value)
+                }
+                handlerMoveRightOption={(option, value) =>
+                  this.handlerMoveRightOption(option, value)
+                }
+                handleSizeOption={(option, value) =>
+                  this.handleSizeOption(option, value)
+                }
+                handleOpacityOption={(option, value) =>
+                  this.handleOpacityOption(option, value)
+                }
                 handlerRotateXOption={this.handlerRotateXOption}
                 handlerRotateYOption={this.handlerRotateYOption}
+                openAddCartModal={this.openAddCartModal}
               />
             );
           }
-          // --------준식님---------
-          // else if (this.state.mode === "image"){
-          //   return <ImageSection />
-          // }
         })()}
+
+        <AddCartModal
+          active={this.state.addCartModal}
+          closeModal={this.closeAddCartModal}
+        />
+        <ItemChangeModal
+          active={this.state.itemChangeModal}
+          closeModal={this.closeItemChangeModal}
+        />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import ItemDATA from "DATA/ItemDATA";
 import ProductItem from "./ProductItem";
 import "./MainBody.scss";
@@ -16,10 +17,11 @@ export class MainBody extends Component {
         price={el.price}
         sex={el.sex}
         type={el.type}
+        goCustomizePage={() => this.props.history.push("/customize")}
       />
     ));
     return <div className="product-list-body">{itemList}</div>;
   }
 }
 
-export default MainBody;
+export default withRouter(MainBody);
