@@ -40,7 +40,7 @@ export default function OrderListTableContent(props) {
         <div className="price-info">{`${props.price.toLocaleString()}원`}</div>
       </td>
       <td>
-        {props.mode === "cart" ? (
+        {props.mode === "/list/cart" ? (
           <div className="edit-info">
             <div className="edit-count">수량 변경</div>
             <div className="edit-send-likelist">나중에 구매</div>
