@@ -15,7 +15,7 @@ export class OptionSection extends Component {
     return (
       <div
         className="option-section"
-        style={{ display: this.props.active ? "block" : "none" }}
+        // style={{ display: this.props.active ? "block" : "none" }}
       >
         <div className="selector-area">
           <div className="item-name">{data.name}</div>

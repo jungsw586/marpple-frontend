@@ -11,6 +11,28 @@ export default class TextOption extends Component {
     });
   };
   render() {
+    const {
+      handleMode,
+      fontFamily,
+      fontFamilyData,
+      handlerTextOption,
+      fontColorCode,
+      fontColor,
+      fontColorData,
+      handlerTextRotateXOption,
+      handlerTextRotateYOption,
+      activeX,
+      activeY,
+      fontSize,
+      handlerTextSizeUpOption,
+      handlerTextSizeDownOption,
+      handlerTextMoveLeftOption,
+      handlerTextMoveTopOption,
+      handlerTextMoveDownOption,
+      handlerTextMoveRightOption,
+      openAddCartModal
+    } = this.props;
+    const { SpreadFontOption } = this.state;
     return (
       <div className="text-section">
         <div className="text-selector-area">
@@ -21,7 +43,7 @@ export default class TextOption extends Component {
                 "http://s3.marpple.co/files/u_14355/2018/11/original/f_12438_1541409323249_q9vQ8BNlU4U9lrAq6ER5V.png"
               }
               alt={"back-Btn"}
-              onClick={() => this.props.handleMode("default")}
+              onClick={() => handleMode("default")}
             />
             <div className="title">폰트 스타일</div>
           </div>
@@ -34,30 +56,27 @@ export default class TextOption extends Component {
               >
                 <div
                   className="selected-option-value"
-                  style={{ fontFamily: this.props.fontFamily }}
+                  style={{ fontFamily: fontFamily }}
                 >
-                  {this.props.fontFamily}
+                  {fontFamily}
                 </div>
                 <img
-                  className={`spread ${this.state.SpreadFontOption && "down"}`}
+                  className={`spread ${SpreadFontOption && "down"}`}
                   src={
                     "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                   }
                   alt="spread-img"
                 />
               </div>
-              {this.state.SpreadFontOption && (
+              {SpreadFontOption && (
                 <div className="select-option-box">
-                  {this.props.fontFamilyData.map((el, id) => (
+                  {fontFamilyData.map((el, id) => (
                     <div
                       className="option"
                       key={id}
                       style={{ fontFamily: el.fontFamily }}
                       onClick={() =>
-                        this.props.handlerTextOption(
-                          "fontFamily",
-                          el.fontFamily
-                        )
+                        handlerTextOption("fontFamily", el.fontFamily)
                       }
                     >
                       {el.name}
@@ -71,7 +90,7 @@ export default class TextOption extends Component {
                 <div
                   className="bar bold"
                   onClick={() => {
-                    this.props.handlerTextOption("fontWeight", "bold");
+                    handlerTextOption("fontWeight", "bold");
                   }}
                 >
                   B
@@ -79,7 +98,7 @@ export default class TextOption extends Component {
                 <div
                   className="bar italic"
                   onClick={() => {
-                    this.props.handlerTextOption("fontStyle", "italic");
+                    handlerTextOption("fontStyle", "italic");
                   }}
                 >
                   I
@@ -87,7 +106,7 @@ export default class TextOption extends Component {
                 <div
                   className="bar underline"
                   onClick={() => {
-                    this.props.handlerTextOption("textDecoration", "underline");
+                    handlerTextOption("textDecoration", "underline");
                   }}
                 >
                   U
@@ -95,10 +114,7 @@ export default class TextOption extends Component {
                 <div
                   className="middleline"
                   onClick={() => {
-                    this.props.handlerTextOption(
-                      "textDecoration",
-                      "line-through"
-                    );
+                    handlerTextOption("textDecoration", "line-through");
                   }}
                 >
                   S
@@ -112,7 +128,7 @@ export default class TextOption extends Component {
                   }
                   alt={"left"}
                   onClick={() => {
-                    this.props.handlerTextOption("textAlign", "left");
+                    handlerTextOption("textAlign", "left");
                   }}
                 />
                 <img
@@ -122,7 +138,7 @@ export default class TextOption extends Component {
                   }
                   alt={"center"}
                   onClick={() => {
-                    this.props.handlerTextOption("textAlign", "center");
+                    handlerTextOption("textAlign", "center");
                   }}
                 />
                 <img
@@ -131,7 +147,7 @@ export default class TextOption extends Component {
                   }
                   alt={"right"}
                   onClick={() => {
-                    this.props.handlerTextOption("textAlign", "right");
+                    handlerTextOption("textAlign", "right");
                   }}
                 />
               </div>
@@ -142,21 +158,17 @@ export default class TextOption extends Component {
               <div className="text-color-title">글씨 색상</div>
               <div
                 className="selected-color"
-                style={{ color: this.props.fontColorCode }}
-              >{`- ${this.props.fontColor}`}</div>
+                style={{ color: fontColorCode }}
+              >{`- ${fontColor}`}</div>
             </div>
             <div className="text-color-list">
-              {this.props.fontColorData.map((el, id) => {
+              {fontColorData.map((el, id) => {
                 return (
                   <div
                     key={id}
                     style={{ backgroundColor: el.colorCode }}
                     onClick={() => {
-                      this.props.handlerTextOption(
-                        "color",
-                        el.colorCode,
-                        el.name
-                      );
+                      handlerTextOption("color", el.colorCode, el.name);
                     }}
                   ></div>
                 );
@@ -166,22 +178,16 @@ export default class TextOption extends Component {
           <div className="text-locate-control-area">
             <div className="text-rotate-X">
               <div className="text-rotate-X-title">상하 반전</div>
-              <div
-                className="rotateX-value"
-                onClick={this.props.handlerTextRotateXOption}
-              >
-                <div className={this.props.activeX && `active`}>ON</div>
-                <div className={!this.props.activeX && `active`}>OFF</div>
+              <div className="rotateX-value" onClick={handlerTextRotateXOption}>
+                <div className={activeX && `active`}>ON</div>
+                <div className={!activeX && `active`}>OFF</div>
               </div>
             </div>
-            <div
-              className="text-rotate-Y"
-              onClick={this.props.handlerTextRotateYOption}
-            >
+            <div className="text-rotate-Y" onClick={handlerTextRotateYOption}>
               <div className="text-rotate-Y-title">좌우 반전</div>
               <div className="rotateY-value">
-                <div className={this.props.activeY && `active`}>ON</div>
-                <div className={!this.props.activeY && `active`}>OFF</div>
+                <div className={activeY && `active`}>ON</div>
+                <div className={!activeY && `active`}>OFF</div>
               </div>
             </div>
             <div className="text-size">
@@ -194,14 +200,16 @@ export default class TextOption extends Component {
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="up"
+                    onClick={() => handlerTextSizeUpOption("fontSize", 3)}
                   />
-                  <div className="value">1</div>
+                  <div className="value">{`${fontSize}px`}</div>
                   <img
                     className="down"
                     src={
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="down"
+                    onClick={() => handlerTextSizeDownOption("fontSize", 3)}
                   />
                 </div>
               </div>
@@ -215,6 +223,9 @@ export default class TextOption extends Component {
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="left"
+                    onClick={() => {
+                      handlerTextMoveLeftOption("left", 5);
+                    }}
                   />
                 </div>
                 <div className="up-down">
@@ -224,6 +235,9 @@ export default class TextOption extends Component {
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="up"
+                    onClick={() => {
+                      handlerTextMoveTopOption("top", 5);
+                    }}
                   />
                   <img
                     className="down"
@@ -231,6 +245,9 @@ export default class TextOption extends Component {
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="down"
+                    onClick={() => {
+                      handlerTextMoveDownOption("top", 5);
+                    }}
                   />
                 </div>
                 <div className="right">
@@ -239,13 +256,16 @@ export default class TextOption extends Component {
                       "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-arrow-up-b-512.png"
                     }
                     alt="right"
+                    onClick={() => {
+                      handlerTextMoveRightOption("left", 5);
+                    }}
                   />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="button-area" onClick={this.props.openAddCartModal}>
+        <div className="button-area" onClick={openAddCartModal}>
           <div className="button-box">
             <div className="button-text">장바구니 담기</div>
           </div>

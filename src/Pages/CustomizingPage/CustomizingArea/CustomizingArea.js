@@ -3,7 +3,6 @@ import CustomMenu from "./CustomMenu";
 import CustomMake from "./CustomMake";
 import OptionSection from "./OptionSection";
 import ImageOption from "./ImageOption";
-import { AddProperty } from "config";
 import TextOption from "./TextOption";
 import AddCartModal from "Components/Modal/AddCartModal";
 import ItemChangeModal from "Components/Modal/ItemChangeModal";
@@ -27,9 +26,9 @@ export class CustomizingArea extends Component {
     rotateX: false,
     rotateY: false,
     textOption: {
-      left: "0%",
-      top: "35%",
-      fontSize: "40px",
+      left: 0,
+      top: 70,
+      fontSize: 40,
       textAlign: "center",
       transform: "rotateX(0deg)",
       fontFamily: "Kirang Haerang",
@@ -61,44 +60,45 @@ export class CustomizingArea extends Component {
     });
   };
 
+  handleMode = mode => {
+    this.setState({ mode });
+  };
+
+  //-------------------------TEXT OPTION-----------------------------
   handlerTextOption = (option, value, fontColor) => {
-    console.log("value : ", value);
+    const { textOption, bold, italic, activeTextDeco } = this.state;
     if (option === "fontWeight") {
-      this.state.bold ? (value = "normal") : (value = "bold");
+      bold ? (value = "normal") : (value = "bold");
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         },
-        bold: !this.state.bold
+        bold: !bold
       });
     } else if (option === "fontStyle") {
-      this.state.italic ? (value = "normal") : (value = "italic");
+      italic ? (value = "normal") : (value = "italic");
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         },
-        italic: !this.state.italic
+        italic: !italic
       });
     } else if (option === "textDecoration" && value === "underline") {
-      this.state.activeTextDeco === value
-        ? (value = "none")
-        : (value = "underline");
+      activeTextDeco === value ? (value = "none") : (value = "underline");
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         },
         activeTextDeco: value
       });
     } else if (option === "textDecoration" && value === "line-through") {
-      this.state.activeTextDeco === value
-        ? (value = "none")
-        : (value = "line-through");
+      activeTextDeco === value ? (value = "none") : (value = "line-through");
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         },
         activeTextDeco: value
@@ -106,7 +106,7 @@ export class CustomizingArea extends Component {
     } else if (fontColor !== undefined) {
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         },
         fontColor: fontColor
@@ -114,7 +114,7 @@ export class CustomizingArea extends Component {
     } else {
       this.setState({
         textOption: {
-          ...this.state.textOption,
+          ...textOption,
           [option]: value
         }
       });
@@ -122,102 +122,169 @@ export class CustomizingArea extends Component {
   };
 
   handlerTextRotateXOption = () => {
+    const { textOption, textRotateX, textRotateY } = this.state;
     let result = this.state.textRotateX ? 0 : 180;
     let newOption = (() => {
-      if (!this.state.textRotateX && !this.state.textRotateY) {
+      if (!textRotateX && !textRotateY) {
         return `rotateX(${result}deg)`;
-      } else if (this.state.textRotateX && this.state.textRotateY) {
+      } else if (textRotateX && textRotateY) {
         return `rotateY(${result + 180}deg)`;
-      } else if (!this.state.textRotateX && this.state.textRotateY) {
+      } else if (!textRotateX && textRotateY) {
         return `rotate(${result}deg)`;
-      } else if (this.state.textRotateX && !this.state.textRotateY) {
+      } else if (textRotateX && !textRotateY) {
         return `rotate(${result}deg)`;
       }
     })();
     this.setState({
       textOption: {
-        ...this.state.textOption,
+        ...textOption,
         transform: newOption
       },
-      textRotateX: !this.state.textRotateX
+      textRotateX: !textRotateX
     });
   };
 
   handlerTextRotateYOption = () => {
-    let result = this.state.textRotateY ? 0 : 180;
+    const { textOption, textRotateX, textRotateY } = this.state;
+    let result = textRotateY ? 0 : 180;
     let newOption = (() => {
-      if (!this.state.textRotateX && !this.state.textRotateY) {
+      if (!textRotateX && !textRotateY) {
         return `rotateY(${result}deg)`;
-      } else if (this.state.textRotateX && this.state.textRotateY) {
+      } else if (textRotateX && textRotateY) {
         return `rotateX(${result + 180}deg)`;
-      } else if (!this.state.textRotateX && this.state.textRotateY) {
+      } else if (!textRotateX && textRotateY) {
         return `rotate(${result}deg)`;
-      } else if (this.state.textRotateX && !this.state.textRotateY) {
+      } else if (textRotateX && !textRotateY) {
         return `rotate(${result}deg)`;
       }
     })();
     this.setState({
       textOption: {
-        ...this.state.textOption,
+        ...textOption,
         transform: newOption
       },
-      textRotateY: !this.state.textRotateY
+      textRotateY: !textRotateY
     });
   };
 
-  handleMode = mode => {
-    this.setState({ mode });
+  handlerTextMoveDownOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentTop = textOption.top;
+    const changedTop = currentTop + value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedTop
+      }
+    });
   };
-
-  //-----------------------------------------------------------------
+  handlerTextMoveTopOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentTop = textOption.top;
+    const changedTop = currentTop - value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedTop
+      }
+    });
+  };
+  handlerTextMoveLeftOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentLeft = textOption.left;
+    const changedLeft = currentLeft - value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedLeft
+      }
+    });
+  };
+  handlerTextMoveRightOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentLeft = textOption.left;
+    const changedLeft = currentLeft + value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedLeft
+      }
+    });
+  };
+  handlerTextSizeUpOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentSize = textOption.fontSize;
+    const changedSize = currentSize + value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedSize
+      }
+    });
+  };
+  handlerTextSizeDownOption = (option, value) => {
+    const { textOption } = this.state;
+    const currentSize = textOption.fontSize;
+    const changedSize = currentSize - value;
+    this.setState({
+      textOption: {
+        ...textOption,
+        [option]: changedSize
+      }
+    });
+  };
+  //-------------------------IMAGE OPTION------------------------------
   handlerMoveDownOption = (option, value) => {
     const { imageOption } = this.state;
     const currentTop = imageOption.top;
     const changedTop = currentTop + value;
-    let newOption = AddProperty({ [option]: changedTop }, imageOption);
     this.setState({
-      imageOption: newOption
+      imageOption: {
+        ...imageOption,
+        [option]: changedTop
+      }
     });
   };
   handlerMoveTopOption = (option, value) => {
     const { imageOption } = this.state;
     const currentTop = imageOption.top;
     const changedTop = currentTop - value;
-    let newOption = AddProperty({ [option]: changedTop }, imageOption);
     this.setState({
-      imageOption: newOption
+      imageOption: {
+        ...imageOption,
+        [option]: changedTop
+      }
     });
   };
   handlerMoveLeftOption = (option, value) => {
     const { imageOption } = this.state;
     const currentLeft = imageOption.left;
     const changedLeft = currentLeft - value;
-    let newOption = AddProperty({ [option]: changedLeft }, imageOption);
     this.setState({
-      imageOption: newOption
+      imageOption: {
+        ...imageOption,
+        [option]: changedLeft
+      }
     });
   };
   handlerMoveRightOption = (option, value) => {
     const { imageOption } = this.state;
     const currentLeft = imageOption.left;
     const changedLeft = currentLeft + value;
-    let newOption = AddProperty({ [option]: changedLeft }, imageOption);
     this.setState({
-      imageOption: newOption
+      imageOption: {
+        ...imageOption,
+        [option]: changedLeft
+      }
     });
   };
-  handleSizeOption = (option, value) => {
+  handleSizeAndOpacityOption = (option, value) => {
     const { imageOption } = this.state;
-    let newOption = AddProperty({ [option]: value }, imageOption);
     this.setState({
-      imageOption: newOption
-    });
-  };
-  handleOpacityOption = (option, value) => {
-    const { imageOption } = this.state;
-    let newOption = AddProperty({ [option]: value }, imageOption);
-    this.setState({
-      imageOption: newOption
+      imageOption: {
+        ...imageOption,
+        [option]: value
+      }
     });
   };
   handlerRotateXOption = () => {
@@ -225,20 +292,20 @@ export class CustomizingArea extends Component {
     let result = rotateX ? 0 : 180;
     let newOption = (() => {
       if (!rotateX && !rotateY) {
-        return AddProperty({ transform: `rotateX(${result}deg)` }, imageOption);
+        return `rotateX(${result}deg)`;
       } else if (rotateX && rotateY) {
-        return AddProperty(
-          { transform: `rotateY(${result + 180}deg)` },
-          imageOption
-        );
+        return `rotateY(${result + 180}deg)`;
       } else if (!rotateX && rotateY) {
-        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+        return `rotate(${result}deg)`;
       } else if (rotateX && !rotateY) {
-        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+        return `rotate(${result}deg)`;
       }
     })();
     this.setState({
-      imageOption: newOption,
+      imageOption: {
+        ...imageOption,
+        transform: newOption
+      },
       rotateX: !rotateX
     });
   };
@@ -247,20 +314,20 @@ export class CustomizingArea extends Component {
     let result = rotateY ? 0 : 180;
     let newOption = (() => {
       if (!rotateX && !rotateY) {
-        return AddProperty({ transform: `rotateY(${result}deg)` }, imageOption);
+        return `rotateY(${result}deg)`;
       } else if (rotateX && rotateY) {
-        return AddProperty(
-          { transform: `rotateX(${result + 180}deg)` },
-          imageOption
-        );
+        return `rotateX(${result + 180}deg)`;
       } else if (!rotateX && rotateY) {
-        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+        return `rotate(${result}deg)`;
       } else if (rotateX && !rotateY) {
-        return AddProperty({ transform: `rotate(${result}deg)` }, imageOption);
+        return `rotate(${result}deg)`;
       }
     })();
     this.setState({
-      imageOption: newOption,
+      imageOption: {
+        ...imageOption,
+        transform: newOption
+      },
       rotateY: !rotateY
     });
   };
@@ -282,7 +349,19 @@ export class CustomizingArea extends Component {
   };
 
   render() {
-    const { mode, height, imageOption } = this.state;
+    const {
+      fontColorData,
+      fontFamilyData,
+      height,
+      mode,
+      imageOption,
+      textOption,
+      fontColor,
+      textRotateX,
+      textRotateY,
+      addCartModal,
+      itemChangeModal
+    } = this.state;
     const { data } = this.props;
     return (
       <div className="customizing-section" style={{ height: height }}>
@@ -291,8 +370,8 @@ export class CustomizingArea extends Component {
           <CustomMake
             data={data}
             handlerTextMode={this.handlerTextMode}
-            mode={this.state.mode}
-            textOption={this.state.textOption}
+            mode={mode}
+            textOption={textOption}
             handleMode={mode => this.handleMode(mode)}
             openItemChangeModal={this.openItemChangeModal}
             imageActive={mode === "image"}
@@ -300,38 +379,57 @@ export class CustomizingArea extends Component {
           />
         </div>
         {(() => {
-          if (this.state.mode === "default") {
+          if (mode === "default") {
             return (
               <OptionSection
                 data={data}
                 openItemChangeModal={this.openItemChangeModal}
                 openAddCartModal={this.openAddCartModal}
-                active={mode === "default"}
+                //active={mode === "default"}
               />
             );
-          } else if (this.state.mode === "text") {
+          } else if (mode === "text") {
             return (
               <TextOption
                 handleMode={mode => this.handleMode(mode)}
-                activeX={this.state.textRotateX}
-                activeY={this.state.textRotateY}
-                fontFamily={this.state.textOption.fontFamily}
-                fontFamilyData={this.state.fontFamilyData}
-                fontColorData={this.state.fontColorData}
-                fontColor={this.state.fontColor}
-                fontColorCode={this.state.textOption.color}
+                activeX={textRotateX}
+                activeY={textRotateY}
+                fontSize={textOption.fontSize}
+                fontFamily={textOption.fontFamily}
+                fontFamilyData={fontFamilyData}
+                fontColorData={fontColorData}
+                fontColor={fontColor}
+                fontColorCode={textOption.color}
                 handlerTextOption={(option, value, fontColor) =>
                   this.handlerTextOption(option, value, fontColor)
                 }
                 handlerTextRotateXOption={this.handlerTextRotateXOption}
                 handlerTextRotateYOption={this.handlerTextRotateYOption}
+                handlerTextMoveDownOption={(option, value) =>
+                  this.handlerTextMoveDownOption(option, value)
+                }
+                handlerTextMoveTopOption={(option, value) =>
+                  this.handlerTextMoveTopOption(option, value)
+                }
+                handlerTextMoveLeftOption={(option, value) =>
+                  this.handlerTextMoveLeftOption(option, value)
+                }
+                handlerTextMoveRightOption={(option, value) =>
+                  this.handlerTextMoveRightOption(option, value)
+                }
+                handlerTextSizeUpOption={(option, value) =>
+                  this.handlerTextSizeUpOption(option, value)
+                }
+                handlerTextSizeDownOption={(option, value) =>
+                  this.handlerTextSizeDownOption(option, value)
+                }
                 openAddCartModal={this.openAddCartModal}
               />
             );
-          } else if (this.state.mode === "image") {
+          } else if (mode === "image") {
             return (
               <ImageOption
-                active={mode === "image"}
+                //active={mode === "image"}
                 handleMode={mode => this.handleMode(mode)}
                 handlerMoveDownOption={(option, value) =>
                   this.handlerMoveDownOption(option, value)
@@ -345,8 +443,8 @@ export class CustomizingArea extends Component {
                 handlerMoveRightOption={(option, value) =>
                   this.handlerMoveRightOption(option, value)
                 }
-                handleSizeOption={(option, value) =>
-                  this.handleSizeOption(option, value)
+                handleSizeAndOpacityOption={(option, value) =>
+                  this.handleSizeAndOpacityOption(option, value)
                 }
                 handleOpacityOption={(option, value) =>
                   this.handleOpacityOption(option, value)
@@ -360,11 +458,11 @@ export class CustomizingArea extends Component {
         })()}
 
         <AddCartModal
-          active={this.state.addCartModal}
+          active={addCartModal}
           closeModal={this.closeAddCartModal}
         />
         <ItemChangeModal
-          active={this.state.itemChangeModal}
+          active={itemChangeModal}
           closeModal={this.closeItemChangeModal}
         />
       </div>

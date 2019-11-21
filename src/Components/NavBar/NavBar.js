@@ -161,10 +161,10 @@ class NavBar extends Component {
             </Link>
             <div className="navBar-menu">
               <Link className="navBar-menu-clothes" to={"/menu"}>
-                Clothes
+                의류
               </Link>
               <Link className="navBar-menu-phoneCase" to={"/menu"}>
-                PhoneCases
+                폰케이스
               </Link>
             </div>
           </div>

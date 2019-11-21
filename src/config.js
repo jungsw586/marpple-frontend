@@ -19,8 +19,3 @@ export const itemFrontImg =
 
 export const itemBackImg =
   "https://s3.marpple.co/files/u_1085120/2019/9/original/f_787030_1567576888612_LEd0PsyoMl3U2nE5MX5f.png?canvas=v2";
-
-export const AddProperty = (info, obj) => {
-  let copyObj = Object.assign({}, obj);
-  return Object.assign(copyObj, info);
-};
