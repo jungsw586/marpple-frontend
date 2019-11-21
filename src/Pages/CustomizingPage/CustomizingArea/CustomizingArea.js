@@ -5,19 +5,22 @@ import OptionSection from "./OptionSection";
 import TextSection from "./TextOption";
 import "./CustomizingArea.scss";
 import FontColorDATA from "DATA/fontColor";
+import FontFmailyDATA from "DATA/fontFamily";
 
 export class CustomizingArea extends Component {
   state = {
     fontColorData: FontColorDATA,
+    fontFamilyData: FontFmailyDATA,
     width: 0,
     height: 0,
     mode: "default",
     textOption: {
       left: "0%",
       top: "35%",
-      fontSize: "30px",
+      fontSize: "40px",
       textAlign: "center",
       transform: "rotateX(0deg)",
+      fontFamily: "Kirang Haerang",
       color: "#000"
     },
     fontColor: "검정",
@@ -55,6 +58,7 @@ export class CustomizingArea extends Component {
   };
 
   handlerTextOption = (option, value, fontColor) => {
+    console.log("value : ", value);
     if (option === "fontWeight") {
       this.state.bold ? (value = "normal") : (value = "bold");
       this.setState({
@@ -102,6 +106,13 @@ export class CustomizingArea extends Component {
           [option]: value
         },
         fontColor: fontColor
+      });
+    } else {
+      this.setState({
+        textOption: {
+          ...this.state.textOption,
+          [option]: value
+        }
       });
     }
   };
@@ -179,6 +190,8 @@ export class CustomizingArea extends Component {
                 handleMode={mode => this.handleMode(mode)}
                 activeX={this.state.textRotateX}
                 activeY={this.state.textRotateY}
+                fontFamily={this.state.textOption.fontFamily}
+                fontFamilyData={this.state.fontFamilyData}
                 fontColorData={this.state.fontColorData}
                 fontColor={this.state.fontColor}
                 fontColorCode={this.state.textOption.color}

@@ -1,9 +1,9 @@
 const FontFmailyDATA = [
-  { name: "검정", fontFamily: "#000" },
-  { name: "빨강", fontFamily: "#FF0000" },
-  { name: "노랑", fontFamily: "#FFD700" },
-  { name: "골드", fontFamily: "#BDB76B" },
-  { name: "파랑", fontFamily: "#0000FF" }
+  { name: "Kirang Haerang", fontFamily: "Kirang Haerang" },
+  { name: "Gugi", fontFamily: "Gugi" },
+  { name: "Dokdo", fontFamily: "Dokdo" },
+  { name: "Yeon Sung", fontFamily: "Yeon Sung" },
+  { name: "Black And White Picture", fontFamily: "Black And White Picture" }
 ];
 
 export default FontFmailyDATA;
