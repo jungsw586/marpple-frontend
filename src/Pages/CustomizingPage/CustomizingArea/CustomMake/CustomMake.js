@@ -22,6 +22,7 @@ export class CustomMake extends Component {
 
   render() {
     const { front } = this.state;
+    const { openItemChangeModal } = this.props;
     return (
       <div className="make">
         <div className="item">
@@ -56,7 +57,7 @@ export class CustomMake extends Component {
         </div>
         <div className="customize-menu">
           <div className="customize-menu-selector">
-            <div className="selector-container">
+            <div className="selector-container" onClick={openItemChangeModal}>
               <div
                 className="selector-icon"
                 style={{ backgroundImage: `url(${itemChange})` }}
