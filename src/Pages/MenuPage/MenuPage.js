@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import MenuAside from "./MenuAside";
 import MenuMain from "./MenuMain";
 import NavBar from "Components/NavBar";
+import Footer from "Components/Footer";
 import "./MenuPage.scss";
 
 export class MenuPage extends Component {
@@ -16,6 +17,7 @@ export class MenuPage extends Component {
             <MenuMain />
           </div>
         </div>
+        <Footer />
       </>
     );
   }

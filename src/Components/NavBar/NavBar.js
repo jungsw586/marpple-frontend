@@ -53,7 +53,7 @@ class NavBar extends Component {
   handlerKakaoLoginSignup = () => {
     window.Kakao.Auth.login({
       success: authObj => {
-        fetch("http://10.58.2.201:8000/user/kakao-login", {
+        fetch("http://10.58.4.236:8001/user/kakao-login", {
           method: "get",
           headers: {
             Authorization: authObj.access_token
@@ -161,10 +161,10 @@ class NavBar extends Component {
             </Link>
             <div className="navBar-menu">
               <Link className="navBar-menu-clothes" to={"/menu"}>
-                Clothes
+                의류
               </Link>
               <Link className="navBar-menu-phoneCase" to={"/menu"}>
-                PhoneCases
+                폰케이스
               </Link>
             </div>
           </div>
